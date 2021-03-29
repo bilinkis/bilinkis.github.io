@@ -1,8 +1,8 @@
 let controller = {
-    main: function (){
+    main: function (req,res){
         res.render('product', {title: 'Página de productos'});
     }, 
-    add: function (){
+    add: function (req,res){
         res.render('product-add', {title: 'Agregar producto'});
     }
 }

@@ -1,8 +1,8 @@
 let controller = {
-    login: function (){
+    login: function (req,res){
         res.render('login', {title: 'Página de login'});
     }, 
-    register: function (){
+    register: function (req,res){
         res.render('register', {title: 'Página de register'});
     }
 }

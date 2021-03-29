@@ -4,12 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const loginRouter = require('./routes/login');
-const productsRouter = require('./routes/products')
-const profileRouter = require('./routes/profile')
-const registerRouter = require('./routes/register') 
-const searchRouter = require('./routes/search')
+let indexRouter = require('./routes/index');
+let loginRouter = require('./routes/login');
+let productsRouter = require('./routes/products');
+let profileRouter = require('./routes/profile');
+let registerRouter = require('./routes/register');
+let searchRouter = require('./routes/search');
 
 var app = express();
 
