@@ -2,7 +2,7 @@ let controller = {
     main: function (){
         res.render('product', {title: 'Página de productos'});
     }, 
-    register: function (){
+    add: function (){
         res.render('product-add', {title: 'Agregar producto'});
     }
 }
