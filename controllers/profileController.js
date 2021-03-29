@@ -1,8 +1,8 @@
 let controller = {
-    main: function (){
+    main: function (req,res){
         res.render('profile', {title: 'Página del usuario'});
     },
-    edit:function (){
+    edit:function (req,res){
         res.render('profile-edit', {title: 'Página de edición'})
     }
 
