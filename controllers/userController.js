@@ -3,7 +3,7 @@ let controller = {
         res.render('login', {title: 'Página de login'});
     }, 
     register: function (req,res){
-        res.render('register', {title: 'Página de register'});
+        res.render('register', {title: 'Página de register', path : req.originalUrl});
     }
 }
 module.exports = controller;
