@@ -76,6 +76,34 @@
         </fieldset>
         </form>
 <% } %> 
-
+<% if(path == "/products/add"){ %>
+    <form class="pure-form pure-form-aligned form" style="text-align: center;">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="Nombre">Nombre del producto</label>
+                <input type="text" name="Nombre del producto" id="">
+                <span class="pure-form-message-inline">*</span>
+            </div>
+            <div class="pure-control-group">
+                <label for="categoria">Categoría</label>
+        <select id="cat">
+            <option>Juego de cartas</option>
+            <option>Juego de mesa</option>
+            <option>Otro</option>
+        </select>
+                <span class="pure-form-message-inline">*</span>
+            </div>
+            <div class="pure-control-group">
+                <label for="precio">Precio</label>
+                <input type="precio" name="precio" id="">
+                <span class="pure-form-message-inline">*</span>
+            </div>
+            <div class="pure-controls">
+                <button type="submit" class="pure-button pure-button-primary">Añadir producto</button>
+            </div>
+            
+        </fieldset>
+        </form>
+<% } %> 
 
 
