@@ -105,5 +105,45 @@
         </fieldset>
         </form>
 <% } %> 
-
+<% if(path == "/profile/edit"){ %>
+    <div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title" style="text-align: center;">Editá tu perfil</h2>
+			</div>
+  <form class="pure-form pure-form-aligned form" style="display: block; margin:0 auto;">
+    <fieldset>
+        <h2>Mostrar nombre y apellido de la persona logueada</h2>
+        <div class="pure-control-group">
+            <label for="email">Cambiar email</label>
+            <input type="email" id="email" placeholder="" />
+            <span class="pure-form-message-inline">*</span>
+        </div>
+        <div class="pure-control-group">
+            <label for="email">Confirmar email</label>
+            <input type="email" id="email" placeholder="" />
+            <span class="pure-form-message-inline">*</span>
+        </div>
+        <div class="pure-control-group">
+          <label for="phone">Cambiar teléfono</label>
+          <input type="tel" id="phone" placeholder="" />
+          <span class="pure-form-message-inline">*</span>
+      </div>
+      <div class="pure-control-group">
+        <label for="password">Cambiar contraseña</label>
+        <input type="password" id="pwd" placeholder="" />
+        <span class="pure-form-message-inline">*</span>
+    </div>
+    <div class="pure-control-group">
+      <label for="pwdconfirm">Confirmar contraseña</label>
+      <input type="password" id="pwdconfirm" placeholder="" />
+      <span class="pure-form-message-inline">*</span>
+  </div>
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Guardar cambios</button>
+        </div>
+    </fieldset>
+</form>
+</div>
+<% } %> 
 
