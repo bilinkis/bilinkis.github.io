@@ -1,5 +1,17 @@
 /*====== Fonts ======*/
 @import url('https://fonts.googleapis.com/stylesheets?family=Roboto:300,400,700&display=swap');
+@font-face {
+  font-family: SF-regular;
+  src: url("/fonts/SF-regular.otf") format("opentype");
+}
+@font-face {
+  font-family: SF-light;
+  src: url("/fonts/SF-light.otf") format("opentype");
+}
+@font-face {
+  font-family: SF-black;
+  src: url("/fonts/SF-black.otf") format("opentype");
+}
 
 
 /*====== Variables ======*/
@@ -19,6 +31,14 @@
   box-sizing: border-box;
 }
 
+h1, h2, h3 {
+  font-family: 'SF-black';
+}
+
+p{
+  font-family: 'SF-light';
+}
+
 html,
 body {
   min-height: 100vh;
@@ -27,7 +47,7 @@ body {
 }
 
 body {
-  font-family: var(--base-font-family);
+  font-family: 'SF-regular';
   font-weight: 300;
   background-color: var(--light-gray);
 }
@@ -68,7 +88,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: #596275;
 }
 
 .main-header_home-link,
@@ -125,6 +145,7 @@ hr {
 .main-navbar {
   margin-top: 20px;
   display: none;
+  color: white;
 }
 
 .left-navbar,
