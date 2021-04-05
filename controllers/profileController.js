@@ -3,7 +3,7 @@ let controller = {
         res.render('profile', {title: 'Página del usuario'});
     },
     edit:function (req,res){
-        res.render('profile-edit', {title: 'Página de edición'})
+        res.render('profile-edit', {title: 'Página de edición', path: req.originalUrl})
     }
 
 }
