@@ -1,4 +1,3 @@
-
 CREATE TABLE users (
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR (100) NOT NULL,
@@ -13,10 +12,10 @@ birthday DATE NOT NULL
 CREATE TABLE posts (
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 title VARCHAR(200) NOT NULL, 
-description VARCHAR(350) NULL,
+description VARCHAR(500) NULL,
 image VARCHAR(350) NULL,
 userId INT UNSIGNED,
-createdAt DATETIME NOT NULL,
+createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 
 FOREIGN KEY (userId) REFERENCES users(id)
 );
@@ -25,7 +24,7 @@ CREATE TABLE comments (
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 userId INT UNSIGNED,
 comment VARCHAR(250) NOT NULL,
-createdAt DATETIME NOT NULL,
+createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 productId INT UNSIGNED,
 
 FOREIGN KEY (userId) REFERENCES users(id),
@@ -48,3 +47,7 @@ VALUES (DEFAULT, 'Teg Clásico', 'Disfrutá de una apasionante acción bélica d
 (DEFAULT, 'Juego de Tronos', 'Es un juego de mesa muy completo con un poco de todo: rol, comercio, economía, estrategia, cartas, PvP y PvE… Lo recomiendo sobretodo para gente que quiera dar un salto de aficionado a algo más complejo y pro.', '10.jpg', '1', DEFAULT);
 
 SELECT *FROM posts;
+
+
+INSERT INTO comments
+VALUES (DEFAULT,'1','Muy buen producto!',DEFAULT,'1'),(DEFAULT,'2','Gran producto!',DEFAULT,'2'),(DEFAULT,'3','Recomendado',DEFAULT,'3'),(DEFAULT,'4','Muy buen producto!',DEFAULT,'4'),(DEFAULT,'5','No está bueno!',DEFAULT,'5'),(DEFAULT,'5','Buen producto!',DEFAULT,'6'),(DEFAULT,'1','No me gustó',DEFAULT,'7'),(DEFAULT,'2','Malisimo!',DEFAULT,'8'),(DEFAULT,'3','Muy buen producto!',DEFAULT,'9'),(DEFAULT,'4','Buenisimo',DEFAULT,'10'),(DEFAULT,'3','Muy buen producto!',DEFAULT,'1'),(DEFAULT,'2','Muy buen producto!',DEFAULT,'2'),(DEFAULT,'4','buen producto!',DEFAULT,'3'),(DEFAULT,'5','pésimo!',DEFAULT,'4'),(DEFAULT,'1','Muy buen producto!',DEFAULT,'5'),(DEFAULT,'5','terrible producto!',DEFAULT,'6'),(DEFAULT,'2','muy conforme',DEFAULT,'7'),(DEFAULT,'1','No me gustó para nada',DEFAULT,'8'),(DEFAULT,'4','Muy buen producto!',DEFAULT,'9'),(DEFAULT,'1','Recomendado para mayores de 5',DEFAULT,'10'),(DEFAULT,'2','buen producto',DEFAULT,'1'),(DEFAULT,'3','me gustó',DEFAULT,'2'),(DEFAULT,'4','tremendo!',DEFAULT,'3'),(DEFAULT,'1','malisimo',DEFAULT,'4'),(DEFAULT,'4','re bueno',DEFAULT,'5'),(DEFAULT,'2','recomendable para todos',DEFAULT,'6'),(DEFAULT,'5','a mi mamá no le gustó',DEFAULT,'7'),(DEFAULT,'1','buen regalo',DEFAULT,'8'),(DEFAULT,'5','Super divertido',DEFAULT,'9'),(DEFAULT,'3','buenisimo',DEFAULT,'10'),(DEFAULT,'1','Muy buen producto!',DEFAULT,'1'),(DEFAULT,'2','buen producto!',DEFAULT,'2'),(DEFAULT,'3','flojo producto!',DEFAULT,'3'),(DEFAULT,'4','muy malo',DEFAULT,'4'),(DEFAULT,'5','compraría de nuevo!',DEFAULT,'5'),(DEFAULT,'1','no volvería a comprar',DEFAULT,'6'),(DEFAULT,'2','se lo regale a mi hijo y no le gusto',DEFAULT,'7'),(DEFAULT,'3','me encantó!',DEFAULT,'8'),(DEFAULT,'4','re mil bueno',DEFAULT,'9'),(DEFAULT,'5','muy largas las instrucciones',DEFAULT,'10');
