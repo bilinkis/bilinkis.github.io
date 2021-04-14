@@ -290,7 +290,7 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: #596275;
   font-size: 3.5em;
 }
 
@@ -303,7 +303,7 @@ hr {
 .footer-data p {
   color: var(--gray);
   font-size: 1.5em;
-  font-weight: 300;
+  font-weight: 800;
 }
 
 .sub-footer {
@@ -545,7 +545,7 @@ textarea.form-input {
   }
 
   .footer-data {
-    width: 95%;
-    margin: auto;
+    width: 100%;
+    margin: 0 auto;
   }
 }
