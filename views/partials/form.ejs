@@ -2,148 +2,144 @@
 
 
 <% if(path == "/register"){ %>
-  <div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title" style="text-align: center;">Registrate</h2>
-			</div>
-  <form class="pure-form pure-form-aligned form" style="display: block; margin:0 auto;">
-    <fieldset>
-        <div class="pure-control-group">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" placeholder="" required/>
-            <span class="pure-form-message-inline">*</span>
-        </div>
-        <div class="pure-control-group">
-            <label for="password">Apellido</label>
-            <input type="text" id="lastname" placeholder="" required/>
-            <span class="pure-form-message-inline">*</span>
-        </div>
-        <div class="pure-control-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="" />
-            <span class="pure-form-message-inline">*</span>
-        </div>
-        <div class="pure-control-group">
-          <label for="phone">Teléfono</label>
-          <input type="tel" id="phone" placeholder="" />
-          <span class="pure-form-message-inline">*</span>
-      </div>
-      <div class="pure-control-group">
-      <label for="gender">Género</label>
-        <select id="gender">
-            <option>Masculino</option>
-            <option>Femenino</option>
-            <option>Prefiero no elegir</option>
-        </select>
-      </div>
-      <div class="pure-control-group">
-        <label for="password">Contraseña</label>
-        <input type="password" id="pwd" placeholder="" />
-        <span class="pure-form-message-inline">*</span>
-    </div>
-    <div class="pure-control-group">
-      <label for="pwdconfirm">Contraseña (confirmación)</label>
-      <input type="password" id="pwdconfirm" placeholder="" />
-      <span class="pure-form-message-inline">*</span>
-  </div>
-        <div class="pure-controls">
-            <label for="aligned-cb" class="pure-checkbox">
-                <input type="checkbox" id="aligned-cb" /> I&#x27;ve read the terms and conditions</label>
-            <button type="submit" class="pure-button pure-button-primary">Registrarme</button>
-        </div>
-    </fieldset>
-</form>
-</div>
-<% } %>
-<% if(path == "/login"){ %>
-    <form class="pure-form pure-form-aligned form" style="text-align: center;">
-        <fieldset>
-            <div class="pure-control-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="" required/>
-                <span class="pure-form-message-inline">*</span>
-            </div>
-            <div class="pure-control-group">
-                <label for="pwd">Contraseña</label>
-                <input type="password" id="pws" placeholder="" required/>
-                <span class="pure-form-message-inline">*</span>
-            </div>
-            <div class="pure-controls">
-                <button type="submit" class="pure-button pure-button-primary">Ingresar</button>
-            </div>
-            
-        </fieldset>
-        </form>
-<% } %> 
-<% if(path == "/products/add"){ %>
-    <form class="pure-form pure-form-aligned form" style="text-align: center;">
-        <fieldset>
-            <div class="pure-control-group">
-                <label for="Nombre">Nombre del producto</label>
-                <input type="text" name="Nombre del producto" id="">
-                <span class="pure-form-message-inline">*</span>
-            </div>
-            <div class="pure-control-group">
-                <label for="categoria">Categoría</label>
-        <select id="cat">
-            <option>Juego de cartas</option>
-            <option>Juego de mesa</option>
-            <option>Otro</option>
-        </select>
-                <span class="pure-form-message-inline">*</span>
-            </div>
-            <div class="pure-control-group">
-                <label for="precio">Precio</label>
-                <input type="precio" name="precio" id="">
-                <span class="pure-form-message-inline">*</span>
-            </div>
-            <div class="pure-controls">
-                <button type="submit" class="pure-button pure-button-primary">Añadir producto</button>
-            </div>
-            
-        </fieldset>
-        </form>
-<% } %> 
-<% if(path == "/profile/edit"){ %>
     <div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title" style="text-align: center;">Editá tu perfil</h2>
-			</div>
-  <form class="pure-form pure-form-aligned form" style="display: block; margin:0 auto;">
-    <fieldset>
-        <h2>Mostrar nombre y apellido de la persona logueada</h2>
-        <div class="pure-control-group">
-            <label for="email">Cambiar email</label>
-            <input type="email" id="email" placeholder="" />
+          <div class="row">
+              <div class="col-12">
+                  <h2 class="products-title" style="text-align: center;">Registrate</h2>
+              </div>
+    <form class="pure-form pure-form-aligned form" style="display: block; margin:0 auto;">
+      <fieldset>
+          <div class="pure-control-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" placeholder="" required/>
+              <span class="pure-form-message-inline">*</span>
+          </div>
+          <div class="pure-control-group">
+              <label for="password">Apellido</label>
+              <input type="text" id="lastname" placeholder="" required/>
+              <span class="pure-form-message-inline">*</span>
+          </div>
+          <div class="pure-control-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="" />
+              <span class="pure-form-message-inline">*</span>
+          </div>
+          <div class="pure-control-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" placeholder="" />
             <span class="pure-form-message-inline">*</span>
         </div>
         <div class="pure-control-group">
-            <label for="email">Confirmar email</label>
-            <input type="email" id="email" placeholder="" />
-            <span class="pure-form-message-inline">*</span>
+        <label for="gender">Género</label>
+          <select id="gender">
+              <option>Masculino</option>
+              <option>Femenino</option>
+              <option>Prefiero no elegir</option>
+          </select>
         </div>
         <div class="pure-control-group">
-          <label for="phone">Cambiar teléfono</label>
-          <input type="tel" id="phone" placeholder="" />
+          <label for="password">Contraseña</label>
+          <input type="password" id="pwd" placeholder="" />
           <span class="pure-form-message-inline">*</span>
       </div>
       <div class="pure-control-group">
-        <label for="password">Cambiar contraseña</label>
-        <input type="password" id="pwd" placeholder="" />
+        <label for="pwdconfirm">Contraseña (confirmación)</label>
+        <input type="password" id="pwdconfirm" placeholder="" />
         <span class="pure-form-message-inline">*</span>
     </div>
-    <div class="pure-control-group">
-      <label for="pwdconfirm">Confirmar contraseña</label>
-      <input type="password" id="pwdconfirm" placeholder="" />
-      <span class="pure-form-message-inline">*</span>
+          <div class="pure-controls">
+              <label for="aligned-cb" class="pure-checkbox">
+                  <input type="checkbox" id="aligned-cb" /> I&#x27;ve read the terms and conditions</label>
+              <button type="submit" class="pure-button pure-button-primary">Registrarme</button>
+          </div>
+      </fieldset>
+  </form>
   </div>
-        <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary">Guardar cambios</button>
+  <% } %>
+  <% if(path == "/login"){ %>
+      <form class="pure-form pure-form-aligned form" style="text-align: center;">
+          <fieldset>
+              <div class="pure-control-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" placeholder="" required/>
+                  <span class="pure-form-message-inline">*</span>
+              </div>
+              <div class="pure-control-group">
+                  <label for="pwd">Contraseña</label>
+                  <input type="password" id="pws" placeholder="" required/>
+                  <span class="pure-form-message-inline">*</span>
+              </div>
+              <div class="pure-controls">
+                  <button type="submit" class="pure-button pure-button-primary">Ingresar</button>
+              </div>
+              
+          </fieldset>
+          </form>
+  <% } %> 
+  <% if(path == "/product/add"){ %>
+      <form class="pure-form pure-form-aligned form" style="margin:0 auto;">
+          <fieldset>
+              <div class="pure-control-group">
+                  <label for="name">Nombre del producto</label>
+                  <input type="text" name="name" id="">
+                  <span class="pure-form-message-inline">*</span>
+              </div><div class="pure-control-group">
+                  <label for="description">Descripción del producto</label>
+                  <textarea type="text" name="description" id=""></textarea>
+                  <span class="pure-form-message-inline">*</span>
+              </div>
+              <div class="pure-control-group">
+                  <label for="image">Foto</label>
+                  <input type="file" name="image" id="">
+                  <span class="pure-form-message-inline">*</span>
+              </div>
+  
+              <div class="pure-controls">
+                  <button type="submit" class="pure-button pure-button-primary">Añadir producto</button>
+              </div>
+              
+          </fieldset>
+          </form>
+  <% } %> 
+  <% if(path == "/profile/edit"){ %>
+      <div class="container products-wrapper">
+          <div class="row">
+              <div class="col-12">
+                  <h2 class="products-title" style="text-align: center;">Editá tu perfil</h2>
+              </div>
+    <form class="pure-form pure-form-aligned form" style="display: block; margin:0 auto;">
+      <fieldset>
+          <h2>Mostrar nombre y apellido de la persona logueada</h2>
+          <div class="pure-control-group">
+              <label for="email">Cambiar email</label>
+              <input type="email" id="email" placeholder="" />
+              <span class="pure-form-message-inline">*</span>
+          </div>
+          <div class="pure-control-group">
+              <label for="email">Confirmar email</label>
+              <input type="email" id="email" placeholder="" />
+              <span class="pure-form-message-inline">*</span>
+          </div>
+          <div class="pure-control-group">
+            <label for="phone">Cambiar teléfono</label>
+            <input type="tel" id="phone" placeholder="" />
+            <span class="pure-form-message-inline">*</span>
         </div>
-    </fieldset>
-</form>
-</div>
-<% } %> 
+        <div class="pure-control-group">
+          <label for="password">Cambiar contraseña</label>
+          <input type="password" id="pwd" placeholder="" />
+          <span class="pure-form-message-inline">*</span>
+      </div>
+      <div class="pure-control-group">
+        <label for="pwdconfirm">Confirmar contraseña</label>
+        <input type="password" id="pwdconfirm" placeholder="" />
+        <span class="pure-form-message-inline">*</span>
+    </div>
+          <div class="pure-controls">
+              <button type="submit" class="pure-button pure-button-primary">Guardar cambios</button>
+          </div>
+      </fieldset>
+  </form>
+  </div>
+  <% } %>
 
