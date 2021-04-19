@@ -88,7 +88,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: #596275;
+  background-color: #ebebeb;
 }
 
 .main-header_home-link,
@@ -145,7 +145,8 @@ hr {
 .main-navbar {
   margin-top: 20px;
   display: none;
-  color: white;
+  color: black;
+  font-weight: 700;
 }
 
 .left-navbar,
@@ -192,7 +193,7 @@ hr {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  color: var(--black);
 }
 
 .product-box {
@@ -293,19 +294,19 @@ hr {
 }
 
 .footer-data i {
-  color: #596275;
+  color: black;
   font-size: 3.5em;
 }
 
 .footer-data h2 {
-  color: var(--gray);
+  color: black;
   font-size: 2.4em;
   font-weight: 400;
 }
 
 .footer-data p {
-  color: var(--gray);
-  font-size: 1.5em;
+  color: black;
+  font-size: 2em;
   font-weight: 800;
 }
 
