@@ -21,7 +21,7 @@
           </div>
           <div class="pure-control-group">
               <label for="email">Email</label>
-              <input type="email" id="email" placeholder="" />
+              <input type="email" id="email" placeholder="juan@gmail.com" />
               <span class="pure-form-message-inline">*</span>
           </div>
           <div class="pure-control-group">
@@ -52,8 +52,17 @@
                   <input type="checkbox" id="aligned-cb" /> I&#x27;ve read the terms and conditions</label>
               <button type="submit" class="pure-button pure-button-primary">Registrarme</button>
           </div>
+         
       </fieldset>
+      <div class="preguntas"> 
+        <a href="/login">
+          <p>¿Ya tenés cuenta? Iniciá sesión</p>
+      </a>
+    </div>
+      
   </form>
+
+  
   </div>
   <% } %>
   <% if(path == "/login"){ %>
@@ -71,6 +80,12 @@
               </div>
               <div class="pure-controls">
                 <button type="submit" class="pure-button pure-button-primary">Ingresar</button>
+              </div>
+              <div class= "preguntas">
+                  <a href="/register">
+                <p>¿Todavía no tenés cuenta? Ingresá acá</p>
+                </a>
+
               </div>
               
           </fieldset>
