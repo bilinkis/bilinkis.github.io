@@ -1,30 +1,122 @@
-.form label {
-      font-size:20px;
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-.form input{
-  size: 20px;
-  border: 0;
-	
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
 }
-.form button{
-  background-color: rgba(240, 121, 121, 0.4);
-  color: rgba(0,0,0,0.7);
-  border:0;
-  border-radius: 15px;
-  display: block;
-  margin: 15px auto; 
-  padding: 15px 45px;
+
+.form {
+  max-width: 700px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
+}
+
+.form h1 {
+padding-top: 20px;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.form input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="phone"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="file"],
+input[type="textarea"],
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
   width: 100%;
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-  opacity: 1;
-  visibility: visible;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
 }
 
-.preguntas p{
-  font-size: larger;
-  color: black;
-  font-weight: 1000;
+.form input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
 
+.form select {
+  padding: 6px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+.form button {
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+  margin-bottom: 10px;
+}
+
+fieldset {
+  margin-bottom: 30px;
+  border: none;
+}
+
+legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.8em;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
+.number {
+  background-color: #5fcf80;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 100%;
+}
+
+@media screen and (min-width: 480px) {
+  form {
+    max-width: 480px;
+  }
 }
