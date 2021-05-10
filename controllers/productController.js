@@ -33,6 +33,13 @@ let controller = {
         
         Promise.all([posts,comments])
         .then(function(values){
+            for(let i=0;i<values[1].length;i++){
+                db.Users.findByPk(values[1][i].userId)
+                .then(function(data){
+                    values[1][i].user = data.dataValues;
+                    console.log(values[1][i])
+                })
+            }
             return res.render('product', {title:"Detalle de producto", posts:values[0], comments:values[1]})
         })
             
