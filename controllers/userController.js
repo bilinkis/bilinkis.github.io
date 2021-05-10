@@ -37,13 +37,14 @@ let controller = {
     },
     store:function(req,res){
         let data = req.body;
+        let passEncriptada = bcrypt.hashSync('data.password', 10)
         db.Users.create({
             name: data.name,
             lastName: data.lastName,
             email: data.email,
             phone: data.phone,
             gender: data.gender,
-            password: data.password,
+            password: passEncriptada,
             birthday: data.birthday
         });
         return res.redirect('/')
