@@ -26,6 +26,9 @@ module.exports = function(sequelize, dataTypes){
         createdAt:{
             type: dataTypes.DATE,
         },
+        comments:{
+            type: dataTypes.INTEGER,
+        }
     }
 
     let config = {

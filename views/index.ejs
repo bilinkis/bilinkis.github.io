@@ -13,7 +13,7 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Novedades</h2>
+				<h2 class="products-title">Últimos productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<% for(let i=0;i<latestProducts.length;i++){ %> 
@@ -26,7 +26,7 @@
 						<article class="product-box_data">
 							<h2><%=  latestProducts[i].title  %></h2>
 							<p><%= latestProducts[i].description %></p>
-							<p>Comentarios: 2</p>
+							<p>Comentarios: <%= latestProducts[i].comments %> </p>
 						</article>
 					</a>
 				</section>
@@ -50,7 +50,7 @@
 							<article class="product-box_data">
 								<h2><%=  mostCommented[i].title  %></h2>
 								<p><%= mostCommented[i].description %></p>
-								<p>Comentarios: 2</p>
+								<p>Comentarios: <%= mostCommented[i].comments %> </p>
 							</article>
 						</a>
 					</section>

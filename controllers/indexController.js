@@ -19,6 +19,8 @@ let controller = {
             db.Posts.findAll({
                 raw:true,
                 limit:8,
+                order: [ [ 'comments', 'DESC' ]]
+
             })
             .then(function(data){
                 resolve(data);
