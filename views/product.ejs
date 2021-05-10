@@ -8,7 +8,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title">TEG</h2> 
+			<h2 class="products-title"><%= posts.title %> </h2> 
 		<!-- 	<p class="product-detail-description">
 				<a href="/product/add">Editar</a>
 			</p> botón editar producto -->
@@ -16,29 +16,25 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/1.jpg" alt="" class="product-detail-img">
-					<p class="product-detail-description">
-						TEG o Plan Táctico y Estratégico de la Guerra es un juego de mesa, lanzado originalmente en marzo de 1976. Plantea un conflicto bélico que ocurre sobre un planisferio dividido en 50 países, planteados en tarjetas, elegidos al azar. </p>
+					<img src="/images/products/<%= posts.image %> " alt="" class="product-detail-img">
+					<p class="product-detail-description"><%= posts.description %> </p>
 
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
+						<% console.log(comments.length) %> 
+						<% for(let i=0;i<comments.length;i++){ %> 
 						<article>
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/profile"><b>bautiabella<b> </a> </strong>
-								 Lo quiero!!! Por dónde lo puedo retirar?</p>
+								<strong> <a href="/profile/ "><b> nombre</b> </a> </strong>
+								<br>
+								 <%= comments[i].comment %> </p>
 							</div>
 						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong><a href="/profile"><b>nicobilinkis<b> </a> </strong>
-									Gran juego :)</p>
-							</div>
-						</article>
+						<% } %> 
+						
 					<!--	<article>
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
