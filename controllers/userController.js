@@ -35,7 +35,8 @@ let controller = {
         })
         
     },
-    register:function(){
+    store:function(req,res){
+        return res.redirect('/')
 
     }
 }
