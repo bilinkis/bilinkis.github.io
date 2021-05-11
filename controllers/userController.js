@@ -9,25 +9,31 @@ let controller = {
         return res.render('register', {title: 'Página de register', path : req.originalUrl});
     },
     login:function(req,res){
-        console.log(req.body);
+        
         let data= req.body;
         
         let hashPassword = bcrypt.hashSync(req.body.user_password, 10)
         
         db.Users.findAll({
+            raw:true,
             where:{
                 email:data.user_email,
-                password:hashPassword,
+                
             }
         })
         .then(function(data){
-            if(data.length != 0)
-            {
-            res.redirect('/profile/'+data[0].id)
-        }
-        else{
-            res.redirect('/login')
-        }
+            console.log(data)
+            let checkPass = bcrypt.compareSync(req.body.user_password,data[0].password);
+            if(checkPass = true){
+                res.redirect('/profile/'+data[0].id)
+            }
+            else{
+                console.log(hashPassword)
+                console.log(data.password)
+            }
+            
+        
+        
             
         })
         .catch(function(err){
@@ -37,7 +43,7 @@ let controller = {
     },
     store:function(req,res){
         let data = req.body;
-        let passEncriptada = bcrypt.hashSync('data.password', 10)
+        let passEncriptada = bcrypt.hashSync(data.password, 10)
         db.Users.create({
             name: data.name,
             lastName: data.lastName,
