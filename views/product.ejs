@@ -23,6 +23,10 @@
 				<div class="col-12 col-lg-4">
 					<section class="comments">
 						<% console.log(comments.length) %> 
+						<% if (comments.length == 0){ %>
+<h2>Este producto no tiene comentarios todavía!</h2>
+						<% } else{%> 
+
 						<% for(let i=0;i<comments.length;i++){ %> 
 						<article>
 							<img src="https://via.placeholder.com/35" alt="">
@@ -33,7 +37,7 @@
 								 <%= comments[i].comment %> </p>
 							</div>
 						</article>
-						<% } %> 
+						<% } }%> 
 						
 					<!--	<article>
 							<img src="https://via.placeholder.com/35" alt="">
@@ -63,10 +67,10 @@
 						</article> -->
 
 					</section>
-					<!-- <form class="form" action="" method="POST">
+					<form class="form" action="/comment/add" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form> -->
+					</form>
 					<hr>
 				</div>
 			</div>
