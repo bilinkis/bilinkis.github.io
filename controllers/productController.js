@@ -112,13 +112,13 @@ let controller = {
         
         
     },
-    edit:function(req,res){
+    edit: function(req,res){
         db.Posts.findByPk(req.params.id)
         .then(function(data){
             return res.render('product-edit', {title: "Editar producto", product:data.dataValues, path: req.originalUrl})
         })
     },
-    storeEdit:function(req,res){
+    storeEdit: function(req,res){
         db.Posts.update({
             title:req.body.product_name,
             description:req.body.product_description,

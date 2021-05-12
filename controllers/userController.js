@@ -17,7 +17,7 @@ let controller = {
         db.Users.findAll({
             raw:true,
             where:{
-                email:data.user_email,
+                email: data.user_email,
                 
             }
         })
@@ -41,7 +41,7 @@ let controller = {
         })
         
     },
-    store:function(req,res){
+    store: function(req,res){
         let data = req.body;
         let passEncriptada = bcrypt.hashSync(data.password, 10)
         db.Users.create({
