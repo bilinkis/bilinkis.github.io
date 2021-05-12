@@ -1,12 +1,34 @@
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
-const mkdirp = require('mkdirp')
+var multer = require('multer');
+var fs = require('fs');
+var path = require('path');
+var storage =   multer.diskStorage({
+  destination: function (req, file, callback) {
+    
+            callback(null, 'public/images/products');
+        },
+  filename: function (req, file, callback) {
+    callback(null,  'product-' + Date.now() + path.extname(file.originalname));
+  }
+});
+var upload = multer({ storage : storage}).single('product_file');
+
+
+
 let controller = {
     main: function (req,res){
         let posts = new Promise(function(resolve,reject){
             db.Posts.findByPk(req.params.id)
         .then(function(data){
-            resolve(data);
+            db.Users.findByPk(data.userId)
+            .then(function(user){
+                
+                data.dataValues.user = user.dataValues;
+                
+                resolve(data);
+            })
+            
             
         })
         .catch(function(err){
@@ -33,13 +55,7 @@ let controller = {
         
         Promise.all([posts,comments])
         .then(function(values){
-            for(let i=0;i<values[1].length;i++){
-                db.Users.findByPk(values[1][i].userId)
-                .then(function(data){
-                    values[1][i].user = data.dataValues;
-                    console.log(values[1][i])
-                })
-            }
+            
             return res.render('product', {title:"Detalle de producto", posts:values[0], comments:values[1]})
         })
             
@@ -62,32 +78,39 @@ let controller = {
         return res.render('product-add', {title: 'Agregar producto', path : req.originalUrl});
     },
     saveProduct: function(req,res){
-        console.log(req.files.product_file.name)
+        
+        
+        upload(req,res,function(err) {
+            
+        if(err) {
+            console.log(err);
+        }
         db.Posts.create({
             title: req.body.product_name,
             description: req.body.product_description,
-            image: req.files.product_file.name,
-            userId: '1',
+            image: req.file.filename,
+            userId: '4',
             comments:0,
         })
         .then(function(data){
             console.log(data);
-        req.files.product_file.mv('public/images/products/'+req.files.product_file.name)
-        .then(function(file){
+        
+    
             res.redirect('/product/'+ data.dataValues.id);
         })
         .catch(function(err){
             console.log(err)
         })
-})
+    });
+        
+        
+
 
 
            
             
         
-        .catch(function(err){
-            console.log(err);
-        })
+        
     },
     edit:function(req,res){
         db.Posts.findByPk(req.params.id)

@@ -9,11 +9,16 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= posts.title %> </h2> 
+			<br>
 			<a href="/product/<%=posts.id %>/edit" class="buy-now-button" style="margin: 0 50px;">Editar producto</a>
+			<br>
+			
+			<% console.log() %>
 		<!-- 	<p class="product-detail-description">
 				<a href="/product/add">Editar</a>
 			</p> botón editar producto -->
 		</div>
+		<h2 class="products-title">Creado por: <a href="/profile/<%= posts.dataValues.user.id %>"><%=posts.dataValues.user.name + " " +posts.dataValues.user.lastName%></a></h2>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
@@ -23,7 +28,7 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% console.log(comments.length) %> 
+						<% console.log(comments) %> 
 						<% if (comments.length == 0){ %>
 <h2>Este producto no tiene comentarios todavía!</h2>
 						<% } else{%> 
