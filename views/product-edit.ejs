@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+
+<%- include('./partials/head.ejs') %> 
+
+<body>
+	<%- include('./partials/headerLogueado') %> 
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Editar producto</h2>
+			</div>
+            <form action="/product/edit" method="post" class='form' encType="multipart/form-data">
+
+                <h1>Editá tu producto</h1>
+              
+                <fieldset>
+          <% console.log(product); %>
+          <input type="hidden" name="id" value=<%=product.id %>>
+                  <label for="name">Nombre del producto:</label>
+                  <input required type="text" id="name" name="product_name" value="<%= product.title %>">
+          
+                  <label for="description">Descripción del producto:</label>
+                  <textarea required id="description" name="product_description"><%= product.description %></textarea>
+                  <label for="file">Foto</label>
+                  <input required type="file" id="file" name="product_file" value="<%= product.image %>">
+                  
+                  
+                </fieldset>
+              
+                
+                
+                <button type="submit">Enviar</button>
+              
+              </form>
+
+
+			
+			
+
+
+			<%- include('./partials/footer.ejs') %> 
+</body>
+
+</html>

@@ -9,6 +9,7 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= posts.title %> </h2> 
+			<a href="/product/<%=posts.id %>/edit" class="buy-now-button" style="margin: 0 50px;">Editar producto</a>
 		<!-- 	<p class="product-detail-description">
 				<a href="/product/add">Editar</a>
 			</p> botón editar producto -->
@@ -16,7 +17,7 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%= posts.image %> " alt="" class="product-detail-img">
+					<img src="/images/products/<%= posts.image %> " alt="" class="product-detail-img" width="300px" height="auto">
 					<p class="product-detail-description"><%= posts.description %> </p>
 
 				</article>
@@ -32,7 +33,7 @@
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/profile/ "><b> nombre</b> </a> </strong>
+								<strong> <a href="/profile/"><b> nombre</b> </a> </strong>
 								<br>
 								 <%= comments[i].comment %> </p>
 							</div>

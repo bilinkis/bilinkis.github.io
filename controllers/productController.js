@@ -88,6 +88,31 @@ let controller = {
         .catch(function(err){
             console.log(err);
         })
+    },
+    edit:function(req,res){
+        db.Posts.findByPk(req.params.id)
+        .then(function(data){
+            return res.render('product-edit', {title: "Editar producto", product:data.dataValues, path: req.originalUrl})
+        })
+    },
+    storeEdit:function(req,res){
+        db.Posts.update({
+            title:req.body.product_name,
+            description:req.body.product_description,
+            image:req.files.product_file.name
+        },{
+            where: {id:req.body.id}
+        })
+         .then(function(data){
+            console.log(data)
+            req.files.product_file.mv('public/images/products/'+req.files.product_file.name)
+        .then(function(file){
+            res.redirect('/product/'+ req.body.id);
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+        })
     }
 }
 module.exports = controller;
