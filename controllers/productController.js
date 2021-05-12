@@ -1,6 +1,6 @@
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
-
+const mkdirp = require('mkdirp')
 let controller = {
     main: function (req,res){
         let posts = new Promise(function(resolve,reject){
@@ -60,6 +60,34 @@ let controller = {
     }, 
     add: function (req,res){
         return res.render('product-add', {title: 'Agregar producto', path : req.originalUrl});
+    },
+    saveProduct: function(req,res){
+        console.log(req.files.product_file.name)
+        db.Posts.create({
+            title: req.body.product_name,
+            description: req.body.product_description,
+            image: req.files.product_file.name,
+            userId: '1',
+            comments:0,
+        })
+        .then(function(data){
+            console.log(data);
+        req.files.product_file.mv('public/images/products/'+req.files.product_file.name)
+        .then(function(file){
+            res.redirect('/product/'+ data.dataValues.id);
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+})
+
+
+           
+            
+        
+        .catch(function(err){
+            console.log(err);
+        })
     }
 }
 module.exports = controller;
