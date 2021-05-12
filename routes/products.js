@@ -6,7 +6,6 @@ router.get('/:id', productsController.main);
 router.get('/', productsController.add);
 router.post('/store', productsController.saveProduct);
 router.get('/:id/edit', productsController.edit);
-router.post('/edit-email', productsController.storeEditEmail);
-router.post('/edit-password', productsController.storeEditPassword);
+router.post('/edit', productsController.storeEdit);
 
 module.exports = router; 
