@@ -1,5 +1,6 @@
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
+const bcrypt = require("bcryptjs");
 
 let controller = {
     main: function (req,res){
@@ -46,7 +47,7 @@ let controller = {
     })
     Promise.all([findUser,findPosts,findComments])
     .then(function(values){
-        console.log();
+        console.log(values);
         return res.render('profile', {title:"Perfil", user:values[0].dataValues, posts:values[1], comments:values[2]})
     })
     .catch(function(err){
@@ -60,6 +61,7 @@ let controller = {
         })
     },
     storeEditEmail: function(req,res){
+        console.log(req)
         db.Users.update({
             email:req.body.email_name,
         },{
@@ -67,13 +69,12 @@ let controller = {
         })
          .then(function(data){
             console.log(data)
-        .then(function(file){
             res.redirect('/profile/'+ req.body.id);
         })
         .catch(function(err){
             console.log(err)
         })
-        })
+        
     },
     editPassword: function(req,res){
         db.Users.findByPk(req.params.id)
@@ -82,20 +83,20 @@ let controller = {
         })
     },
     storeEditPassword: function(req,res){
+        let passEncriptada = bcrypt.hashSync(req.body.password, 10)
         db.Users.update({
-            password:req.body.password_name,
+            password:passEncriptada,
         },{
             where: {id:req.body.id}
         })
          .then(function(data){
             console.log(data)
-        .then(function(file){
             res.redirect('/profile/'+ req.body.id);
         })
         .catch(function(err){
             console.log(err)
         })
-        })
+        
     }
 }
 module.exports = controller;
