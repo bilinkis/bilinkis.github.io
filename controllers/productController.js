@@ -119,23 +119,31 @@ let controller = {
         })
     },
     storeEdit: function(req,res){
+        upload(req,res,function(err) {
+            
+        if(err) {
+            console.log(err);
+        }
         db.Posts.update({
             title:req.body.product_name,
             description:req.body.product_description,
-            image:req.files.product_file.name
+            image:req.file.filename
         },{
             where: {id:req.body.id}
         })
-         .then(function(data){
-            console.log(data)
-            req.files.product_file.mv('public/images/products/'+req.files.product_file.name)
-        .then(function(file){
+        .then(function(data){
+            console.log(data);
+        
+    
             res.redirect('/product/'+ req.body.id);
         })
+        
+        
         .catch(function(err){
             console.log(err)
+        
         })
-        })
-    }
+    })
+}
 }
 module.exports = controller;
