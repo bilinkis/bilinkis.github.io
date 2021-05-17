@@ -2,8 +2,13 @@
 <html lang="es">
 <%- include('./partials/head.ejs') %> 
 <body>
+	
+	<% if(locals.loggedIn == null){ %>
 	<%- include('./partials/header.ejs') %> 
-	<% console.log(user);console.log(loggedIn); %>
+	<% } else{ %>
+		<%- include('./partials/headerLogueado.ejs') %> 
+	<% } %>
+	
 	<!-- Banner -->
 	<div class="container">
 		<img src="/images/banner.jpg" alt="Banner de ofertas">

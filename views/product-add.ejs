@@ -5,7 +5,11 @@
 <%- include('./partials/head.ejs') %> 
 
 <body>
-	<%- include('./partials/headerLogueado') %> 
+	<% if(locals.loggedIn == null){ %>
+		<%- include('./partials/header.ejs') %> 
+		<% } else{ %>
+			<%- include('./partials/headerLogueado.ejs') %> 
+		<% } %> 
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">

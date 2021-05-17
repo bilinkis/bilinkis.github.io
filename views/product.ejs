@@ -4,7 +4,11 @@
 <body>
 	<!-- Header -->
 	
-	<%- include('./partials/header.ejs') %> 
+	<% if(locals.loggedIn == null){ %>
+		<%- include('./partials/header.ejs') %> 
+		<% } else{ %>
+			<%- include('./partials/headerLogueado.ejs') %> 
+		<% } %>
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">

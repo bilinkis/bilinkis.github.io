@@ -34,8 +34,8 @@
 				</ul>
 	
 				<ul class="right-navbar">
-					<li><a href="/profile">
-							Martín Palermo <i class="fas fa-user"></i>
+					<li><a href="/profile/<%= locals.user.id %>">
+							<%= locals.user.name +" "+ locals.user.lastName%> <i class="fas fa-user"></i>
 						</a>
 					</li>
 					<li>

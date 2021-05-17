@@ -2,7 +2,11 @@
 <html lang="es">
 <%- include('./partials/head.ejs') %> 
 <body>
-	<%- include('./partials/headerLogueado') %> 
+	<% if(locals.loggedIn == null){ %>
+		<%- include('./partials/header.ejs') %> 
+		<% } else{ %>
+			<%- include('./partials/headerLogueado.ejs') %> 
+		<% } %>
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
