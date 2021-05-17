@@ -52,10 +52,14 @@ let controller = {
                 req.session.loggedIn = true;
                 req.session.save();
                 res.redirect('/profile/'+data.id)
+                if(req.body.rememberme != undefined){
+                    res.cookie('userId', user.id, { maxAge: 1000 * 60 * 5 });
+                    }
             }
             else{
                 console.log(hashPassword)
                 console.log(data.password)
+                res.send(alert('Reescriba su mail y/o contraseña'))
             }
             
         }
@@ -96,6 +100,7 @@ let controller = {
     },
     logout: function(req,res){
         req.session.destroy();
+        res.clearCookie('usedId');
         return res.redirect('/');
     }
 }
