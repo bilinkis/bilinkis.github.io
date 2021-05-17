@@ -93,6 +93,10 @@ let controller = {
         });
         return res.redirect('/')
     })
+    },
+    logout: function(req,res){
+        req.session.destroy();
+        return res.redirect('/');
     }
 }
 module.exports = controller;
