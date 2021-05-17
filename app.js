@@ -28,9 +28,11 @@ app.use(session({
   secret: "Mercado Fun la mejor pagina",
   resave: false,
   saveUninitialized:true,
+  
 }))
 app.use(function(req,res,next){
   if(req.session.loggedIn != null){
+    res.cookie('loggedIn', req.session.loggedIn, {maxAge: 1000 * 60 * 50})
     res.locals = {
       user : req.session.user,
       loggedIn : req.session.loggedIn,
@@ -39,7 +41,7 @@ app.use(function(req,res,next){
     req.session.loggedIn = null;
   }
   return next();
-});
+})
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/product', productsRouter);

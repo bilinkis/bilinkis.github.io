@@ -3,10 +3,19 @@ const Op = db.Sequelize.Op;
 const bcrypt = require("bcryptjs");
 let controller = {
     viewLogin: function (req,res){
+        if(res.locals.loggedIn == null){
         return res.render('login', {title: 'Página de login', path: req.originalUrl});
+    } else{
+        return res.redirect('/profile/'+res.locals.user.id)
+    }
     }, 
     viewRegister: function (req,res){
-        return res.render('register', {title: 'Página de register', path : req.originalUrl});
+        if(res.locals.loggedIn == null){
+            return res.render('register', {title: 'Página de register', path : req.originalUrl});
+        } else{
+            return res.redirect('/profile/'+res.locals.user.id)
+        }
+        
     },
     login:function(req,res){
         
@@ -28,6 +37,7 @@ let controller = {
             if(checkPass = true){
                 req.session.user = data;
                 req.session.loggedIn = true;
+                req.session.save();
                 res.redirect('/profile/'+data.id)
             }
             else{

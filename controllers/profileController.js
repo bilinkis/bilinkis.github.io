@@ -48,17 +48,21 @@ let controller = {
     Promise.all([findUser,findPosts,findComments])
     .then(function(values){
         console.log(values);
-        return res.render('profile', {title:"Perfil", user:values[0].dataValues, posts:values[1], comments:values[2]})
+        return res.render('profile', {title:"Perfil", userData:values[0].dataValues, posts:values[1], comments:values[2]})
     })
     .catch(function(err){
         console.log(err);
     })
     },
     edit: function(req,res){
+        if(res.locals.loggedIn == true){
         db.Users.findByPk(req.params.id)
         .then(function(data){
             return res.render('profile-edit-email', {title: "Cambiá tu email", user: data.dataValues, path: req.originalUrl})
         })
+    } else{
+        return res.redirect('/');
+    }
     },
     storeEditEmail: function(req,res){
         console.log(req)
@@ -77,10 +81,12 @@ let controller = {
         
     },
     editPassword: function(req,res){
+        if(res.locals.loggedIn == true){
         db.Users.findByPk(req.params.id)
         .then(function(data){
             return res.render('profile-edit-password', {title: "Cambiá tu password", user: data.dataValues, path: req.originalUrl})
         })
+    } else{ return res.redirect('/');}
     },
     storeEditPassword: function(req,res){
         let passEncriptada = bcrypt.hashSync(req.body.password, 10)
