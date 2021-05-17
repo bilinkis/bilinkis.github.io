@@ -1,6 +1,19 @@
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
 const bcrypt = require("bcryptjs");
+var multer = require('multer');
+var fs = require('fs');
+var path = require('path');
+var storage =   multer.diskStorage({
+  destination: function (req, file, callback) {
+    
+            callback(null, 'public/images/users');
+        },
+  filename: function (req, file, callback) {
+    callback(null,  'user-' + Date.now() + path.extname(file.originalname));
+  }
+});
+var upload = multer({ storage : storage}).single('user_file');
 let controller = {
     viewLogin: function (req,res){
         if(res.locals.loggedIn == null){
@@ -58,8 +71,16 @@ let controller = {
         
     },
     store: function(req,res){
-        let data = req.body;
-        let passEncriptada = bcrypt.hashSync(data.password, 10)
+        
+        
+        
+        upload(req,res,function(err) {
+            
+            if(err) {
+                console.log(err);
+            }
+    let data = req.body;
+    let passEncriptada = bcrypt.hashSync(req.body.password, 10)
         db.Users.create({
             name: data.name,
             lastName: data.lastName,
@@ -67,10 +88,11 @@ let controller = {
             phone: data.phone,
             gender: data.gender,
             password: passEncriptada,
-            birthday: data.birthday
+            birthday: data.birthday,
+            image:req.file.filename
         });
         return res.redirect('/')
-
+    })
     }
 }
 module.exports = controller;

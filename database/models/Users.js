@@ -31,6 +31,9 @@ module.exports = function(sequelize, dataTypes){
         birthday:{
             type: dataTypes.DATE,
         },
+        image:{
+            type:dataTypes.STRING
+        }
     }
 
     let config = {

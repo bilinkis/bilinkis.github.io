@@ -2,7 +2,7 @@
 
 
 <% if(path == "/register"){ %>
-    <form action="/register/store" method="post" class='form'>
+    <form action="/register/store" method="post" class='form' encType="multipart/form-data">
 
         <h1>Registrate</h1>
       
@@ -28,6 +28,8 @@
             </select>
             <label for="date">Fecha de nacimiento:</label>
             <input type="date" id="date" name="birthday" value="">
+            <label for="file">Foto</label>
+          <input type="file" id="file" name="user_file" accept=".jpg,.jpeg,.png">
           
         </fieldset>
       
