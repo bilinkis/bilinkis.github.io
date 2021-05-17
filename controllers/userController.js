@@ -14,7 +14,7 @@ let controller = {
         
         let hashPassword = bcrypt.hashSync(req.body.user_password, 10)
         
-        db.Users.findAll({
+        db.Users.findOne({
             raw:true,
             where:{
                 email: data.user_email,
@@ -23,16 +23,22 @@ let controller = {
         })
         .then(function(data){
             console.log(data)
-            let checkPass = bcrypt.compareSync(req.body.user_password,data[0].password);
+            if(data != null){
+            let checkPass = bcrypt.compareSync(req.body.user_password,data.password);
             if(checkPass = true){
-                res.redirect('/profile/'+data[0].id)
+                req.session.user = data;
+                req.session.loggedIn = true;
+                res.redirect('/profile/'+data.id)
             }
             else{
                 console.log(hashPassword)
                 console.log(data.password)
             }
             
-        
+        }
+        else{
+            console.log("no hay user");
+        }
         
             
         })

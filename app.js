@@ -12,6 +12,7 @@ let profileRouter = require('./routes/profile');
 let registerRouter = require('./routes/register');
 let searchRouter = require('./routes/search');
 let commentsRouter = require('./routes/comments');
+let session = require('express-session');
 
 var app = express();
 
@@ -23,7 +24,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(session({
+  secret: "Mercado Fun la mejor pagina",
+  resave: false,
+  saveUninitialized:true,
+}))
+app.use(function(req,res,next){
+  if(req.session.loggedIn != null){
+    res.locals = {
+      user : req.session.user,
+      loggedIn : req.session.loggedIn,
+    }
+  } else{
+    req.session.loggedIn = null;
+  }
+  return next();
+});
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/product', productsRouter);
