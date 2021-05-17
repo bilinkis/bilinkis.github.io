@@ -13,6 +13,7 @@ let registerRouter = require('./routes/register');
 let searchRouter = require('./routes/search');
 let commentsRouter = require('./routes/comments');
 let session = require('express-session');
+const db = require('./database/models');
 
 var app = express();
 
@@ -41,6 +42,26 @@ app.use(function(req,res,next){
     req.session.loggedIn = null;
   }
   return next();
+})
+
+app.use(function(req, res, next){
+if(req.cookies.userId != undefined && req.session.loggedIn == undefined){
+  let cookieId = req.cookies.userId;
+
+  db.User.findByPk(cookieId)
+  .then(function(user){
+    req.session.loggedIn = user;
+    res.locals = user;
+
+    return next();
+  })
+  .catch(function(e){
+    console.log(e);
+  })
+}
+else {
+  return next();
+}
 })
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
