@@ -58,7 +58,7 @@ let controller = {
           console.log("pass:"+checkPass);
           if (checkPass == true) {
             if (req.body.rememberme != undefined) {
-                res.cookie("userId", user.id, { maxAge: 1000 * 60 * 5 });
+                res.cookie("userId", data.id, { maxAge: 1000 * 60 * 5 });
               }
             
             req.session.user = data;
