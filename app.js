@@ -48,10 +48,10 @@ app.use(function(req, res, next){
 if(req.cookies.userId != undefined && req.session.loggedIn == undefined){
   let cookieId = req.cookies.userId;
 
-  db.User.findByPk(cookieId)
+  db.Users.findByPk(cookieId)
   .then(function(user){
-    req.session.loggedIn = user;
-    res.locals = user;
+    req.session.loggedIn = true;
+    req.session.user = user;
 
     return next();
   })
