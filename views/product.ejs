@@ -44,7 +44,8 @@
 								<strong> <a href="/profile/<%= comments[i]["user.id"]%>"><b><%= comments[i]["user.name"] + " " + comments[i]["user.lastName"] %></b> </a> </strong>
 								<br>
 								 <%= comments[i].comment %> </p>
-							</div>
+								 <form action="/comment/delete" method="post">
+							<button type="submit">Eliminar</button></div></form>
 						</article>
 						<% } }%> 
 						

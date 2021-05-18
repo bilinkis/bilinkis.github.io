@@ -5,7 +5,7 @@
 <%- include('./partials/head.ejs') %> 
 
 <body>
-	<<% if(locals.loggedIn == null){ %>
+	<% if(locals.loggedIn == null){ %>
     <%- include('./partials/header.ejs') %> 
     <% } else{ %>
       <%- include('./partials/headerLogueado.ejs') %> 
@@ -34,10 +34,12 @@
                   
                   
                 </fieldset>
-              
+
                 
                 
                 <button type="submit">Enviar</button>
+                <button type="submit">Eliminar producto</button>
+
               
               </form>
 

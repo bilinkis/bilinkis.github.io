@@ -11,6 +11,16 @@ let controller = {
         .then(function(data){
             res.redirect(req.headers.referer)
         })
+    },
+    delete: function(req,res){
+        db.Comments.delete({
+            userId: res.locals.user.id,
+            comment: req.body.comment,
+            productId: req.body.id
+        })
+        .then(function(data){
+            return res.redirect('/product/' + posts.id )
+        })
     }
 }
 module.exports = controller; 
