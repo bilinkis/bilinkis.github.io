@@ -35,7 +35,8 @@ let controller = {
             raw:true,
             where: {
                 userId:req.params.id
-            }
+            },
+            include: [{model:db.Posts, as:"Posts"}]
         })
         .then(function(data){
             resolve(data);
@@ -45,6 +46,7 @@ let controller = {
             reject()
         })
     })
+    
     Promise.all([findUser,findPosts,findComments])
     .then(function(values){
         console.log(values);
