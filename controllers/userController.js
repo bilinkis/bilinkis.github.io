@@ -100,8 +100,9 @@ let controller = {
     },
     logout: function(req,res){
         req.session.destroy();
-        res.clearCookie('usedId');
-        return res.render('logout', {title: 'Página de logout', path : req.originalUrl});
+        res.clearCookie('userId');
+        res.clearCookie('loggedIn');
+        return res.redirect('/');
     }
 }
 module.exports = controller;
