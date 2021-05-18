@@ -3,6 +3,7 @@ const Op = db.Sequelize.Op;
 var multer = require('multer');
 var fs = require('fs');
 var path = require('path');
+const Users = require("../database/models/Users");
 var storage =   multer.diskStorage({
   destination: function (req, file, callback) {
     
@@ -19,13 +20,16 @@ var upload = multer({ storage : storage}).single('product_file');
 let controller = {
     main: function (req,res){
         let posts = new Promise(function(resolve,reject){
-            db.Posts.findByPk(req.params.id)
+            db.Posts.findOne({
+                where:{id:req.params.id},
+                raw:true
+            })
         .then(function(data){
+            
             db.Users.findByPk(data.userId)
             .then(function(user){
                 
-                data.dataValues.user = user.dataValues;
-                
+                data.user = user.dataValues;
                 resolve(data);
             })
             
@@ -41,7 +45,9 @@ let controller = {
                 raw:true,
                 where:{
                     productId: req.params.id,
-                }
+                },
+                include: [{model:db.Users, as:"user"}]
+                
             })
             .then(function(data){
                 
@@ -55,7 +61,7 @@ let controller = {
         
         Promise.all([posts,comments])
         .then(function(values){
-            
+            console.log(values);
             return res.render('product', {title:"Detalle de producto", posts:values[0], comments:values[1]})
         })
             
