@@ -38,6 +38,18 @@ module.exports = function(sequelize, dataTypes){
     }
 
    const Posts = sequelize.define(alias, cols, config);
-
+    Posts.associate = function(models) {
+        Posts.belongsTo(models.Users,{
+            foreignKey:'userId',
+            as: "Users",
+            allowNull: false,
+            onDelete: "CASCADE"
+        })
+        Posts.hasMany(models.Comments,{
+            foreignKey:'id',
+            allowNull: false,
+            onDelete: "CASCADE"
+        })
+    }
    return Posts;
 }

@@ -32,6 +32,19 @@ module.exports = function(sequelize, dataTypes){
     }
 
    const Comments = sequelize.define(alias, cols, config);
-
+   Comments.associate = function(models){
+    Comments.belongsTo(models.Users,{
+        foreignKey:'userId',
+        as: "Users",
+        allowNull:false,
+        onDelete: "CASCADE"
+    })
+    Comments.belongsTo(models.Posts,{
+        foreignKey:'productId',
+        as:"Posts",
+        allowNull:false,
+        onDelete:"CASCADE"
+    })
+}
    return Comments;
 }
