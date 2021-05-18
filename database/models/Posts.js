@@ -37,16 +37,16 @@ module.exports = function(sequelize, dataTypes){
         underscored: false, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.        
     }
 
-   const Posts = sequelize.define(alias, cols, config);
+    const Posts = sequelize.define(alias, cols, config);
     Posts.associate = function(models) {
         Posts.belongsTo(models.Users,{
-            foreignKey:'userId',
+            foreignKey:'id',
             as: "Users",
             allowNull: false,
             onDelete: "CASCADE"
         })
         Posts.hasMany(models.Comments,{
-            foreignKey:'id',
+            foreignKey:'productId',
             allowNull: false,
             onDelete: "CASCADE"
         })

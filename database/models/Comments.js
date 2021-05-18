@@ -31,20 +31,20 @@ module.exports = function(sequelize, dataTypes){
         underscored: false, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.        
     }
 
-   const Comments = sequelize.define(alias, cols, config);
+    const Comments = sequelize.define(alias, cols, config);
    Comments.associate = function(models){
-    Comments.belongsTo(models.Users,{
-        foreignKey:'userId',
-        as: "Users",
-        allowNull:false,
-        onDelete: "CASCADE"
-    })
-    Comments.belongsTo(models.Posts,{
-        foreignKey:'productId',
-        as:"Posts",
-        allowNull:false,
-        onDelete:"CASCADE"
-    })
-}
-   return Comments;
-}
+     Comments.belongsTo(models.Users,{
+         foreignKey:'userId',
+         as: "user",
+         allowNull:false,
+         onDelete: "CASCADE"
+     })
+     Comments.belongsTo(models.Posts,{
+         foreignKey:'productId',
+         as:"Posts",
+         allowNull:false,
+         onDelete:"CASCADE"
+     })
+ }
+    return Comments;
+ }
