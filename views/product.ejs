@@ -18,11 +18,9 @@
 			<br>
 			 
 			<% console.log() %>
-		<!-- 	<p class="product-detail-description">
-				<a href="/product/add">Editar</a>
-			</p> botón editar producto -->
+		
 		</div>
-		<h2 class="products-title">Creado por: <a href="/profile/<%= posts.dataValues.user.id %>"><%=posts.dataValues.user.name + " " +posts.dataValues.user.lastName%></a></h2>
+		<h2 class="products-title">Creado por: <a href="/profile/<%= posts.user.id %>"><%=posts.user.name + " " +posts.user.lastName%></a></h2>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
@@ -39,42 +37,18 @@
 
 						<% for(let i=0;i<comments.length;i++){ %> 
 						<article>
-							<img src="https://via.placeholder.com/35" alt="">
+							
+							<img src="/images/users/<%= comments[i]["user.image"] %>" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/profile/"><b> nombre</b> </a> </strong>
+								<strong> <a href="/profile/<%= comments[i]["user.id"]%>"><b><%= comments[i]["user.name"] + " " + comments[i]["user.lastName"] %></b> </a> </strong>
 								<br>
 								 <%= comments[i].comment %> </p>
 							</div>
 						</article>
 						<% } }%> 
 						
-					<!--	<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore</p>
-							</div>
-						</article> -->
+					
 
 					</section>
 					<form class="form" action="/comment/add" method="POST">
