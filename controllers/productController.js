@@ -75,7 +75,11 @@ let controller = {
          
     }, 
     add: function (req,res){
+        if(res.locals.loggedIn == true){
         return res.render('product-add', {title: 'Agregar producto', path : req.originalUrl});
+    }else{
+        return res.redirect('/login')
+    }
     },
     saveProduct: function(req,res){
         
@@ -89,7 +93,7 @@ let controller = {
             title: req.body.product_name,
             description: req.body.product_description,
             image: req.file.filename,
-            userId: '4',
+            userId: res.locals.user.id,
             comments:0,
         })
         .then(function(data){

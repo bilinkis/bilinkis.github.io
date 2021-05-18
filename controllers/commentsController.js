@@ -3,7 +3,7 @@ const Op = db.Sequelize.Op;
 let controller = {
     save: function(req,res){
         db.Comments.create({
-            userId: 1,
+            userId: res.locals.user.id,
             comment:req.body.comment,
             productId: req.body.id,
             
