@@ -154,6 +154,18 @@ let controller = {
         
         })
     })
+},
+delete: function(req, res){
+    db.Posts.delete({
+            title: req.body.product_name,
+            description: req.body.product_description,
+            image: req.file.filename,
+            userId: res.locals.user.id,
+            comments: req.body.comments,
+    })
+    .then(function(req,res){
+        return res.redirect('/')
+    })
 }
 }
 module.exports = controller;
