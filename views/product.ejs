@@ -44,8 +44,11 @@
 								<strong> <a href="/profile/<%= comments[i]["user.id"]%>"><b><%= comments[i]["user.name"] + " " + comments[i]["user.lastName"] %></b> </a> </strong>
 								<br>
 								 <%= comments[i].comment %> </p>
+								 <% if(locals.loggedIn == true && locals.user.id == comments[i]["user.id"]){ %>
 								 <form action="/comment/delete" method="post">
-							<button type="submit">Eliminar</button></div></form>
+									<input type="hidden" name="commentId" value="<%= comments[i].id %>">
+							<button type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button></div></form>
+							<% } %>
 						</article>
 						<% } }%> 
 						

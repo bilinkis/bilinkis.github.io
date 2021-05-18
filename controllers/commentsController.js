@@ -12,14 +12,13 @@ let controller = {
             res.redirect(req.headers.referer)
         })
     },
-    delete: function(req,res){
-        db.Comments.delete({
-            userId: res.locals.user.id,
-            comment: req.body.comment,
-            productId: req.body.id
+    delete: function(req,res){ 
+        console.log(req.body)
+        db.Comments.destroy({
+            where: {id:req.body.commentId}
         })
         .then(function(data){
-            return res.redirect('/product/' + posts.id )
+            return res.redirect(req.headers.referer)
         })
     }
 }
