@@ -116,14 +116,17 @@ let controller = {
                     userId: req.body.userId
                 },
                 include:[{model:db.Comments, as:"Comments"}]
-        })
+            })
         })
         .then(function(){
             db.Users.destroy({
                 where: {
-                    userId: req.body.userId
+                    id: req.body.userId
                 },
-        })
+            })
+            req.session.destroy();
+            res.clearCookie("userId");
+            res.clearCookie("loggedIn");
         })
         
         .then(function(){

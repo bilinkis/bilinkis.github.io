@@ -37,12 +37,13 @@
 					</ul> 
 				</div>
 			</div>
+			<br><br>
 			<% if(locals.loggedIn == true && locals.user.id == userData.id){ %>
 			<div style="display:block;margin:0 auto;">
-				<a class="btn mt-3 ml-4" href="/profile/<%=userData.id %>/edit-email">EDITAR EMAIL</a>
-					<a class="btn mt-3 ml-4" href="/profile/<%=userData.id %>/edit-password">EDITAR PASSWORD</a>
+				<a class="btn mt-3 ml-4" href="/profile/<%=userData.id %>/edit-email">EDITAR EMAIL</a><br>
+					<a class="btn mt-3 ml-4" href="/profile/<%=userData.id %>/edit-password">EDITAR PASSWORD</a><br>
 						<form action= "/profile/delete" method= "POST"> 
-							<input type="hidden" name="userId" value="<%= userData.id %> " id=""><button class="btn mt-3 ml-4" style="margin: 0px;" type="submit">ELIMINAR</button></form>
+							<input type="hidden" name="userId" value="<%= userData.id %> " id=""><button class="btn mt-3 ml-4" style="margin: 0px;background-color: red;" type="submit">ELIMINAR</button></form>
 			</div>
 			<% } %>
 		</div>
