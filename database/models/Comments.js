@@ -37,13 +37,13 @@ module.exports = function(sequelize, dataTypes){
          foreignKey:'userId',
          as: "user",
          allowNull:false,
-         onDelete: "CASCADE"
+         onDelete: "cascade"
      })
      Comments.belongsTo(models.Posts,{
          foreignKey:'productId',
          as:"Posts",
          allowNull:false,
-         onDelete:"CASCADE"
+         onDelete:"cascade"
      })
  }
     return Comments;
