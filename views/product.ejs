@@ -55,11 +55,13 @@
 					
 
 					</section>
+					<% if(locals.loggedIn != null){ %> 
 					<form class="form" action="/comment/add" method="POST">
 						<input type="hidden" name="id" value="<%= posts.id %>">
 						<input class="form-input" type="text" value="" name="comment" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
+					<%}%>
 					<hr>
 				</div>
 			</div>
