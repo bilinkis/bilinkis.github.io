@@ -29,6 +29,11 @@ app.use(session({
   secret: "Mercado Fun la mejor pagina",
   resave: false,
   saveUninitialized:true,
+  rolling:true,
+  cookie:{
+    httpOnly:true,
+    maxAge: 1*60*60*1000
+  }
   
 }))
 app.use(function(req,res,next){
