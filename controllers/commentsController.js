@@ -9,7 +9,18 @@ let controller = {
             
         })
         .then(function(data){
-            res.redirect(req.headers.referer)
+            db.Posts.findByPk(req.body.id)
+            .then(function(post){
+                db.Posts.update({
+                    comments: post.dataValues.comments + 1,
+                },{
+                    where:{id:req.body.id}
+                })
+                .then(function(){
+                    res.redirect(req.headers.referer)
+                })
+            })
+            
         })
     },
     delete: function(req,res){ 
