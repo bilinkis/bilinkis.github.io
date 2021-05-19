@@ -123,10 +123,16 @@ let controller = {
         
     },
     edit: function(req,res){
-        db.Posts.findByPk(req.params.id)
+        if (res.locals.loggedIn == true){
+            db.Posts.findByPk(req.params.id)
         .then(function(data){
             return res.render('product-edit', {title: "Editar producto", product:data.dataValues, path: req.originalUrl})
         })
+        }
+        else {
+            return res.redirect('/login')
+        }
+        
     },
     storeEdit: function(req,res){
         upload(req,res,function(err) {

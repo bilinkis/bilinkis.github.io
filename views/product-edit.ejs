@@ -8,12 +8,11 @@
 	<% if(locals.loggedIn == null){ %>
     <%- include('./partials/header.ejs') %> 
 
-    <h1> Tenés que estar logueado para entrar a esta página!</h1>
-		<a href="/"><p>Volver a la página principal</p></a>
 
     <% } else{ %>
       <%- include('./partials/headerLogueado.ejs') %> 
-   
+      <% } %> 
+
 
 	<!-- Novedades --> 
 	<div class="container products-wrapper">
@@ -46,7 +45,6 @@
               
               </form>
 
-              <% } %> 
 			
 			
 
