@@ -40,9 +40,9 @@ module.exports = function(sequelize, dataTypes){
     const Posts = sequelize.define(alias, cols, config);
     Posts.associate = function(models) {
         Posts.belongsTo(models.Users,{
-            foreignKey:'id',
-            as: "Users",
-            allowNull: false,
+            foreignKey:'userId',
+            as: "user",
+            allowNull:false,
             onDelete: "CASCADE"
         })
         Posts.hasMany(models.Comments,{

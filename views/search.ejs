@@ -17,6 +17,9 @@
 				<h2 class="products-title">Resultados de búsqueda para '<%= query %>'</h2>
 				
 			</div>
+			<%if(buscador.length == 0){%>
+				<h2>No se han encontrado resultados para '<%=query%>', intente buscar otro término</h2>
+			<%}%>
 			<% for(let i=0;i<buscador.length;i++){ %> 
 
 				<div class="col-12 col-sm-6 col-lg-3">
@@ -27,6 +30,7 @@
 							</figure>
 							<article class="product-box_data">
 								<h2><%=  buscador[i].title  %></h2>
+								<a href="/profile/<%=buscador[i]["user.id"]%>"><p style="font-weight: bold;">Creado por <%= buscador[i]["user.name"] + " " + buscador[i]["user.lastName"] %></p></a>
 								<p><%= buscador[i].description %></p>
 								<p>Comentarios: <%= buscador[i].comments %> </p>
 							</article>
@@ -36,7 +40,7 @@
 			<% } %> 
 
 			<!-- Show the "ultimos" products -->
-				<%- include('./partials/busqueda.ejs') %> 
+				 
 
 			<%- include('./partials/footer.ejs') %> 
 </body>
