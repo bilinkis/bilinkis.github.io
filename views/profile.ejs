@@ -34,13 +34,15 @@
 					<ul class="">
 						<li><%= posts.length %> productos</li>
 						<li><%= comments.length %>  comentarios</li>
-					</ul>
+					</ul> 
 				</div>
 			</div>
 			<% if(locals.loggedIn == true && locals.user.id == userData.id){ %>
 			<div style="display:block;margin:0 auto;">
 				<a class="btn mt-3 ml-4" href="/profile/<%=userData.id %>/edit-email">EDITAR EMAIL</a>
 					<a class="btn mt-3 ml-4" href="/profile/<%=userData.id %>/edit-password">EDITAR PASSWORD</a>
+						<form action= "/profile/delete" method= "POST"> 
+							<input type="hidden" name="userId" value="<%= userData.id %> " id=""><button class="btn mt-3 ml-4" style="margin: 0px;" type="submit">Eliminar</button></form>
 			</div>
 			<% } %>
 		</div>

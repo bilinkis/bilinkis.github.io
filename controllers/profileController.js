@@ -63,7 +63,7 @@ let controller = {
             return res.render('profile-edit-email', {title: "Cambiá tu email", user: data.dataValues, path: req.originalUrl})
         })
     } else{
-        return res.redirect('/login');
+        return res.redirect('/login'); 
     }
     },
     storeEditEmail: function(req,res){
@@ -105,6 +105,33 @@ let controller = {
             console.log(err)
         })
         
+    },
+    delete: function(req, res){
+        db.Comments.destroy({
+            where:{userId:req.body.userId}
+        })
+        .then(function(){
+            db.Posts.destroy({
+                where: {
+                    userId: req.body.userId
+                },
+                include:[{model:db.Comments, as:"Comments"}]
+        })
+        })
+        .then(function(){
+            db.Users.destroy({
+                where: {
+                    userId: req.body.userId
+                },
+        })
+        })
+        
+        .then(function(){
+            return res.redirect('/')
+        })
+        .catch(function(err){
+            console.log(err)
+        })
     }
 }
 module.exports = controller;

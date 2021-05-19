@@ -7,5 +7,6 @@ router.get('/:id/edit-email', profileController.edit);
 router.get('/:id/edit-password', profileController.editPassword);
 router.post('/edit-email', profileController.storeEditEmail);
 router.post('/edit-password', profileController.storeEditPassword);
+router.post('/delete', profileController.delete);
 
 module.exports = router;

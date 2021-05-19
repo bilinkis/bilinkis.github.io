@@ -28,7 +28,7 @@ let controller = {
             
             db.Users.findByPk(data.userId)
             .then(function(user){
-                
+                 
                 data.user = user.dataValues;
                 resolve(data);
             })
