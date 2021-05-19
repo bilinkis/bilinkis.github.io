@@ -156,13 +156,22 @@ let controller = {
     })
 },
 delete: function(req, res){
-    db.Posts.destroy({
+    db.Comments.destroy({
+        where:{productId:req.body.postId}
+    }).then(function(){
+        db.Posts.destroy({
             where: {
                 id: req.body.postId
-            }
+            },
+            include:[{model:db.Comments, as:"Comments"}]
     })
+    })
+    
     .then(function(){
         return res.redirect('/')
+    })
+    .catch(function(err){
+        console.log(err)
     })
 }
 }
