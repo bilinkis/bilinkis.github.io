@@ -4,10 +4,13 @@ let controller = {
     main: function (req, res){
         let findLatestProducts = new Promise(function(resolve,reject){
             db.Posts.findAll({
+                raw:true,
             limit: 8,
-            order: [ [ 'id', 'DESC' ]]
+            order: [ [ 'id', 'DESC' ]],
+            include:[{model:db.Users,as:"user"}]
     })
             .then(function(data){
+                console.log(data)
             resolve(data);
             })
             .catch(function(err){
@@ -19,7 +22,8 @@ let controller = {
             db.Posts.findAll({
                 raw:true,
                 limit:8,
-                order: [ [ 'comments', 'DESC' ]]
+                order: [ [ 'comments', 'DESC' ]],
+                include:[{model:db.Users,as:"user"}]
 
             })
             .then(function(data){

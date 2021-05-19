@@ -31,6 +31,8 @@
 						</figure>
 						<article class="product-box_data">
 							<h2><%=  latestProducts[i].title  %></h2>
+							
+							<p style="font-weight: bold;"><a href="/profile/<%=latestProducts[i]["user.id"]%>">Creado por <%= latestProducts[i]["user.name"] + " " + latestProducts[i]["user.lastName"] %></a></p>
 							<p><%= latestProducts[i].description %></p>
 							<p>Comentarios: <%= latestProducts[i].comments %> </p>
 						</article>
@@ -55,6 +57,8 @@
 							</figure>
 							<article class="product-box_data">
 								<h2><%=  mostCommented[i].title  %></h2>
+								
+								<p style="font-weight: bold;"><a href="/profile/<%=mostCommented[i]["user.id"]%>">Creado por <%= mostCommented[i]["user.name"] + " " + mostCommented[i]["user.lastName"] %></a></p>
 								<p><%= mostCommented[i].description %></p>
 								<p>Comentarios: <%= mostCommented[i].comments %> </p>
 							</article>
