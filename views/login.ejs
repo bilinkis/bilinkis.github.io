@@ -7,6 +7,12 @@
 	
 	<% if(locals.loggedIn == null){ %>
 		<%- include('./partials/header.ejs') %> 
+		
+				
+		<% } else{ %>
+			<%- include('./partials/headerLogueado.ejs') %> 
+		<% } %>
+
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
@@ -27,13 +33,6 @@
 						<%- include('./partials/form.ejs') %> 
 					</div>
 				</div>
-				
-		<% } else{ %>
-			<%- include('./partials/headerLogueado.ejs') %> 
-
-			<h1>Ya estás logueado!</h1>
-
-		<% } %>
 
 	<!-- Novedades -->
 	

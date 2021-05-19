@@ -8,15 +8,13 @@
 	<% if(locals.loggedIn == null){ %>
 		<%- include('./partials/header.ejs') %> 
 
-		<%- include('./partials/form.ejs', {path : path}) %>
 
 
 		<% } else{ %>
 			<%- include('./partials/headerLogueado.ejs') %> 
-	<h1>Ya estás logueado!</h1>
-
 		<% } %>
 
+		<%- include('./partials/form.ejs', {path : path}) %>
 
 	<!-- Novedades -->
 	

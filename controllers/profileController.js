@@ -63,7 +63,7 @@ let controller = {
             return res.render('profile-edit-email', {title: "Cambiá tu email", user: data.dataValues, path: req.originalUrl})
         })
     } else{
-        return res.redirect('/');
+        return res.redirect('/login');
     }
     },
     storeEditEmail: function(req,res){
