@@ -7,32 +7,36 @@
 	
 	<% if(locals.loggedIn == null){ %>
 		<%- include('./partials/header.ejs') %> 
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Ingresar</h2>
+				</div>
+				</div>
+				<!-- Show the "ultimos" products -->
+				<div class="row">
+					<div class="col-12">
+						<% console.log(error) %> 
+						<%if(error == "noemail"){%>
+							<h2 style="text-align:center; color:red;">No existe un usuario con ese email. Intente ingresar nuevamente</h2>
+						<%}%>
+						<% if (error == "nopassword"){ %> 
+							<h2 style="text-align:center; color:red;">La contraseña es incorrecta. Intente ingresar nuevamente</h2>
+							<% } %>
+						
+						<%- include('./partials/form.ejs') %> 
+					</div>
+				</div>
+				
 		<% } else{ %>
 			<%- include('./partials/headerLogueado.ejs') %> 
+
+			<h1>Ya estás logueado!</h1>
+
 		<% } %>
 
 	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Ingresar</h2>
-			</div>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<div class="row">
-				<div class="col-12">
-					<% console.log(error) %> 
-					<%if(error == "noemail"){%>
-						<h2 style="text-align:center; color:red;">No existe un usuario con ese email. Intente ingresar nuevamente</h2>
-					<%}%>
-					<% if (error == "nopassword"){ %> 
-						<h2 style="text-align:center; color:red;">La contraseña es incorrecta. Intente ingresar nuevamente</h2>
-						<% } %>
-					
-					<%- include('./partials/form.ejs') %> 
-				</div>
-			</div>
-			
+	
 
 
 
