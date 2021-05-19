@@ -135,31 +135,59 @@ let controller = {
         
     },
     storeEdit: function(req,res){
-        upload(req,res,function(err) {
+            upload(req,res,function(err) {
             
-        if(err) {
-            console.log(err);
-        }
-        db.Posts.update({
-            title:req.body.product_name,
-            description:req.body.product_description,
-            image:req.file.filename
-        },{
-            where: {id:req.body.id}
-        })
-        .then(function(data){
-            console.log(data);
+                if(err) {
+                    console.log(err);
+                }
+                if(req.body.product_file){
+                db.Posts.update({
+                    title:req.body.product_name,
+                    description:req.body.product_description,
+                    image:req.file.filename
+                },{
+                    where: {id:req.body.id}
+                })
+                .then(function(data){
+                    console.log(data);
+                
+            
+                    return res.redirect('/product/'+ req.body.id);
+                })
+                
+                
+                .catch(function(err){
+                    console.log(err)
+                
+                })
+            } else{
+                db.Posts.update({
+                    title:req.body.product_name,
+                    description:req.body.product_description,
+                },{
+                    where: {id:req.body.id}
+                })
+                .then(function(data){
+                    console.log(data);
+                
+            
+                    return res.redirect('/product/'+req.body.id);
+                })
+                
+                
+                .catch(function(err){
+                    console.log(err)
+                
+                })
+            }
+            })
         
-    
-            res.redirect('/product/'+ req.body.id);
-        })
+            
+                
+                
+            
         
         
-        .catch(function(err){
-            console.log(err)
-        
-        })
-    })
 },
 delete: function(req, res){
     db.Comments.destroy({

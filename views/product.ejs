@@ -53,6 +53,7 @@
 								 <% if(locals.loggedIn == true && locals.user.id == comments[i]["user.id"]){ %>
 								 <form action="/comment/delete" method="post">
 									<input type="hidden" name="commentId" value="<%= comments[i].id %>">
+									<input type="hidden" name="postId" value="<%=comments[i].productId %>">
 							<button type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button></div></form>
 							<% } %>
 						</article>

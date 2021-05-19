@@ -29,7 +29,22 @@ let controller = {
             where: {id:req.body.commentId}
         })
         .then(function(data){
-            return res.redirect(req.headers.referer)
+            db.Posts.findByPk(req.body.postId)
+            .then(function(post){
+                db.Posts.update({
+                    comments: post.dataValues.comments -1,
+                },{
+                    where:{id:req.body.postId}
+                })
+            })
+            .then(function(){
+                return res.redirect(req.headers.referer)
+            })
+            
+            
+        })
+        .catch(function(err){
+            console.log(err)
         })
     }
 }

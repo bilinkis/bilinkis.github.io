@@ -26,14 +26,14 @@
               
                 <fieldset>
           <% console.log(product); %>
-          <input type="hidden" name="id" value=<%=product.id %>>
+          <input type="hidden" name="id" value="<%= product.id %>">
                   <label for="name">Nombre del producto:</label>
                   <input required type="text" id="name" name="product_name" value="<%= product.title %>">
           
                   <label for="description">Descripción del producto:</label>
                   <textarea required id="description" name="product_description"><%= product.description %></textarea>
                   <label for="file">Foto</label>
-                  <input required type="file" id="file" name="product_file" value="<%= product.image %>">
+                  <input type="file" id="file" name="product_file" value="<%= product.image %>">
                   
                   
                 </fieldset>
