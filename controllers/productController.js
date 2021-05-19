@@ -25,18 +25,21 @@ let controller = {
                 raw:true
             })
         .then(function(data){
-            
+            if(data !== null){
             db.Users.findByPk(data.userId)
             .then(function(user){
                  
                 data.user = user.dataValues;
                 resolve(data);
             })
+        } else{
+            return res.redirect('/404')
+            reject()
+        }
             
             
         })
         .catch(function(err){
-            reject();
             console.log(err);
         })
         })

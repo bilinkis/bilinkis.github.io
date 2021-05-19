@@ -7,8 +7,11 @@ let controller = {
     let findUser = new Promise(function(resolve,reject){
         db.Users.findByPk(req.params.id)
         .then(function(data){
-            
+            if(data!==null){
             resolve(data);
+        }else{
+            return res.redirect('/404')
+        }
         })
         .catch(function(err){
             reject();

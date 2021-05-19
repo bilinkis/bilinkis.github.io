@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./partials/head.ejs') %> 
+<body>
+	
+	<% if(locals.loggedIn == null){ %>
+	<%- include('./partials/header.ejs') %> 
+	<% } else{ %>
+		<%- include('./partials/headerLogueado.ejs') %> 
+	<% } %>
+	
+	<!-- Banner -->
+	<div class="container">
+		<img src="/images/banner.jpg" alt="Banner de ofertas">
+	</div>
+	<!-- /Banner -->
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="products-title">No se encontró esa página</h1>
+                <h2>En 5 segundos volverás a la home</h2>
+                <script>setTimeout(function(){window.location.href="/"},5000)</script>
+			</div>
+			<!-- Show the "ultimos" products -->
+
+	<%- include('./partials/footer.ejs') %> 
+
+</body>	
+</html>

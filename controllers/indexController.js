@@ -43,6 +43,9 @@ let controller = {
             console.log(err);
         })
         
+    },
+    error404: function(req,res){
+        return res.render('404',{title:"Error 404!"})
     }
 }
 module.exports = controller;
