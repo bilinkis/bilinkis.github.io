@@ -34,7 +34,7 @@ FOREIGN KEY (productId) REFERENCES posts(id)
 );
 
 INSERT INTO users
-VALUES (DEFAULT, 'Bautista', 'Abella', 'bautiabella@hotmail.com', '123345678', 'Prefiero no responder', 'bauticapo123', '2001-08-23'),(DEFAULT, 'Sofia', 'Ruiz', 'sofiruiz12@gmail.com', '123345678', 'Mujer', 'sofitalinda89', '2003-02-06'), (DEFAULT, 'Josefina', 'Staudenmaier', 'jochust@gmail.com', '1154701208', 'Mujer', 'cangurito23', '2001-08-12'), (DEFAULT, 'Nicolas', 'Bilinkis', 'nico@bilinkis.com', '12345648', 'Hombre', 'amogithub', '1999-08-03'), (DEFAULT, 'Carlos', 'Perez', 'charliperez@hotmail.com', '1554789699', 'Hombre', 'charlikari', '1970-11-25');
+VALUES (DEFAULT, 'Bautista', 'Abella', 'bautiabella@hotmail.com', '123345678', 'Prefiero no responder', 'bauticapo123', '2001-08-23', ''),(DEFAULT, 'Sofia', 'Ruiz', 'sofiruiz12@gmail.com', '123345678', 'Mujer', 'sofitalinda89', '2003-02-06',''), (DEFAULT, 'Josefina', 'Staudenmaier', 'jochust@gmail.com', '1154701208', 'Mujer', 'cangurito23', '2001-08-12',''), (DEFAULT, 'Nicolas', 'Bilinkis', 'nico@bilinkis.com', '12345648', 'Hombre', 'amogithub', '1999-08-03',''), (DEFAULT, 'Carlos', 'Perez', 'charliperez@hotmail.com', '1554789699', 'Hombre', 'charlikari', '1970-11-25','');
 
 INSERT INTO posts
 VALUES (DEFAULT, 'Teg Clásico', 'Disfrutá de una apasionante acción bélica donde intervienen la lógica, la inteligencia y el azar.El juego tiene lugar en un planisferio dividido en 50 países. Cada jugador tiene un objetivo secreto a cumplir, para lo cual deberá, mediante diferentes estrategias, ampliar sus dominios, reordenar sus fuerzas, realizar pactos, emprender ataques y defenderse de los adversarios. El primer jugador en lograr su objetivo secreto, o conquistar 30 países (objetivo común), será el ganador.', '1.jpg', '1', DEFAULT,0),
