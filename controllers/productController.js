@@ -156,14 +156,12 @@ let controller = {
     })
 },
 delete: function(req, res){
-    db.Posts.delete({
-            title: req.body.product_name,
-            description: req.body.product_description,
-            image: req.file.filename,
-            userId: res.locals.user.id,
-            comments: req.body.comments,
+    db.Posts.destroy({
+            where: {
+                id: req.body.postId
+            }
     })
-    .then(function(req,res){
+    .then(function(){
         return res.redirect('/')
     })
 }
