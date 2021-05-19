@@ -43,12 +43,12 @@ module.exports = function(sequelize, dataTypes){
             foreignKey:'userId',
             as: "user",
             allowNull:false,
-            onDelete: "cascade"
+            onDelete: "CASCADE",
+            
         })
         Posts.hasMany(models.Comments,{
             foreignKey:'productId',
             allowNull: false,
-            onDelete: "cascade"
         })
     }
    return Posts;
