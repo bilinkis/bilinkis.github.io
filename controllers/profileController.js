@@ -66,6 +66,7 @@ let controller = {
             return res.render('profile-edit-email', {title: "Cambiá tu email", user: data.dataValues, path: req.originalUrl})
         })
     } else{
+        res.cookie("error", "needLogin", {maxAge:1000})
         return res.redirect('/login'); 
     }
     },
@@ -91,7 +92,7 @@ let controller = {
         .then(function(data){
             return res.render('profile-edit-password', {title: "Cambiá tu password", user: data.dataValues, path: req.originalUrl})
         })
-    } else{ return res.redirect('/');}
+    } else{ res.cookie("error", "needLogin", {maxAge:1000});return res.redirect('/login');}
     },
     storeEditPassword: function(req,res){
         let passEncriptada = bcrypt.hashSync(req.body.password, 10)

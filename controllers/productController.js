@@ -87,6 +87,7 @@ let controller = {
         if(res.locals.loggedIn == true){
         return res.render('product-add', {title: 'Agregar producto', path : req.originalUrl});
     }else{
+        res.cookie("error", "needLogin", {maxAge:1000})
         return res.redirect('/login')
     }
     },
@@ -133,6 +134,7 @@ let controller = {
         })
         }
         else {
+            res.cookie("error", "needLogin", {maxAge:1000})
             return res.redirect('/login')
         }
         

@@ -88,17 +88,37 @@ let controller = {
       }
       let data = req.body;
       let passEncriptada = bcrypt.hashSync(req.body.password, 10);
-      db.Users.create({
-        name: data.name,
-        lastName: data.lastName,
-        email: data.email,
-        phone: data.phone,
-        gender: data.gender,
-        password: passEncriptada,
-        birthday: data.birthday,
-        image: req.file.filename,
-      });
-      return res.redirect("/login");
+      db.Users.findOne({
+        where:{email:data.email}
+      })
+      .then(function(user){
+        if(user == null){
+          db.Users.create({
+            name: data.name,
+            lastName: data.lastName,
+            email: data.email,
+            phone: data.phone,
+            gender: data.gender,
+            password: passEncriptada,
+            birthday: data.birthday,
+            image: req.file.filename,
+          })
+          .then(function(){
+            res.cookie("error", "registerOk", {maxAge:1000});
+            return res.redirect("/login");
+          })
+          .catch(function(err){
+            console.log(err)
+          })
+        } else{
+          res.cookie("error", "registerNo", {maxAge:1000});
+            return res.redirect("/login");
+        }
+      })
+      .catch(function(err){
+        console.log(err)
+      })
+      
     });
   },
   logout: function (req, res) {
