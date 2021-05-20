@@ -29,6 +29,18 @@
 						<% if (error == "nopassword"){ %> 
 							<h2 style="text-align:center; color:red;">La contraseña es incorrecta. Intente ingresar nuevamente</h2>
 							<% } %>
+							<% if(error == "needLogin"){%>
+								<h2 style="text-align:center; color:red;">Tenés que iniciar sesión para poder realizar esa acción.</h2>
+
+							<%} %> 	
+							<% if(error == "registerOk"){%>
+								<h2 style="text-align:center; color:green;">Te registraste correctamente. Ahora iniciá sesión.</h2>
+
+							<%} %> 
+							<% if(error == "registerNo"){%>
+								<h2 style="text-align:center; color:red;">El email ingresado ya está registrado. Iniciá sesión.</h2>
+
+							<%} %> 
 						
 						<%- include('./partials/form.ejs') %> 
 					</div>
