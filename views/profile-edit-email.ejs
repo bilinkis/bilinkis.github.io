@@ -18,6 +18,9 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
+				<%if(error == "emailInUse"){%>
+					<h2 style="text-align:center; color:red;">El email ingresado ya está en uso.</h2>
+				<%}%>
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			<form action="/profile/edit-email" method="post" class='form'>
@@ -26,7 +29,7 @@
               
                 <fieldset>
           <% console.log(user); %>
-          <input type="hidden" name="id" value=<%=user.id %>>
+          <input type="hidden" name="id" value="<%= user.id %>">
                   <label for="mail">Email</label>
                   <input required type="text" id="name" name="email" value="<%= user.email %>">
           

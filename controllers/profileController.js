@@ -63,7 +63,7 @@ let controller = {
         if(res.locals.loggedIn == true){
         db.Users.findByPk(req.params.id)
         .then(function(data){
-            return res.render('profile-edit-email', {title: "Cambiá tu email", user: data.dataValues, path: req.originalUrl})
+            return res.render('profile-edit-email', {title: "Cambiá tu email", user: data.dataValues, path: req.originalUrl,error:req.cookies.error})
         })
     } else{
         res.cookie("error", "needLogin", {maxAge:1000})
@@ -72,18 +72,30 @@ let controller = {
     },
     storeEditEmail: function(req,res){
         console.log(req)
-        db.Users.update({
-            email:req.body.email_name,
-        },{
-            where: {id:req.body.id}
+        db.Users.findOne({
+            where: {email:req.body.email}
         })
-         .then(function(data){
-            console.log(data)
-            res.redirect('/profile/'+ req.body.id);
+        .then(function(user){
+            if(user){
+                res.cookie("error", "emailInUse", {maxAge:1000})
+                res.redirect(req.headers.referer);
+            }
+            else{
+                db.Users.update({
+                    email:req.body.email,
+                },{
+                    where: {id:req.body.id}
+                })
+                 .then(function(data){
+                    console.log(data)
+                    res.redirect('/profile/'+ req.body.id);
+                })
+                .catch(function(err){
+                    console.log(err)
+                })
+            }
         })
-        .catch(function(err){
-            console.log(err)
-        })
+        
         
     },
     editPassword: function(req,res){
