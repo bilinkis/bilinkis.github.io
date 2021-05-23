@@ -25,10 +25,20 @@
 			
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"><%= userData.name + " " + userData.lastName%> 
-						
-					</h1>
-					
+					<h1 class="main-title"><%= userData.name + " " + userData.lastName%> </h1>
+					<% if(locals.loggedIn == true && userData.id !== locals.user.id && follows == null){ %> 
+					<form action="/profile/follow" method="post">
+						<input type="hidden" name="followed" value="<%= userData.id %>">
+						<button class="btn mt-3 ml-4" style="margin: 0px;background-color: blue;" type="submit">SEGUIR</button>
+					</form>
+					<% } %>
+					<% console.log(follows) %>
+				<%	if(locals.loggedIn == true && userData.id !== locals.user.id && follows !== null){%>
+					<form action="/profile/unfollow" method="post">
+						<input type="hidden" name="followed" value="<%= userData.id %>">
+						<button class="btn mt-3 ml-4" style="margin: 0px;background-color: red;" type="submit">DEJAR DE SEGUIR</button>
+					</form>
+					<%}%>
 				</div>
 				<div>
 					<ul class="">

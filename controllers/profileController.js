@@ -49,11 +49,29 @@ let controller = {
             reject()
         })
     })
+    let findFollow = new Promise(function(resolve,reject){
+        if(res.locals.loggedIn == true){
+            db.Followers.findOne({
+                where:{followed:req.params.id,follower:res.locals.user.id},
+                raw:true
+            })
+            .then(function(data){
+                console.log(data);
+                resolve(data);
+            })
+            .catch(function(err){
+                reject()
+                console.log(err);
+            })
+        } else{
+            resolve("empty");
+        }
+    })
     
-    Promise.all([findUser,findPosts,findComments])
+    Promise.all([findUser,findPosts,findComments,findFollow])
     .then(function(values){
-        console.log(values);
-        return res.render('profile', {title:"Perfil", userData:values[0].dataValues, posts:values[1], comments:values[2]})
+        
+        return res.render('profile', {title:"Perfil", userData:values[0].dataValues, posts:values[1], comments:values[2],follows:values[3]})
     })
     .catch(function(err){
         console.log(err);
@@ -147,6 +165,20 @@ let controller = {
         
         .then(function(){
             return res.redirect('/')
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+    },
+    follow: function(req,res){
+        console.log(req.body);
+        console.log(res.locals.user.id)
+        db.Followers.create({
+            followed: req.body.followed,
+            follower: res.locals.user.id,
+        })
+        .then(function(data){
+            return res.redirect(req.headers.referer);
         })
         .catch(function(err){
             console.log(err)
