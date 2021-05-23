@@ -29,10 +29,17 @@ module.exports = function(sequelize, dataTypes){
     Followers.associate = function(models) {
         Followers.hasMany(models.Posts,{
             foreignKey:'userId',
+            sourceKey:'followed',
             as: "Posts",
             allowNull:false,
             onDelete: "CASCADE",
             
+        })
+        Followers.hasOne(models.Users,{
+            foreignKey:'id',
+            sourceKey:'followed',
+            as:'author',
+            allowNull:false
         })
         Followers.belongsTo(models.Users,{
             foreignKey:'followed',
