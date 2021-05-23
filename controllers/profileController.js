@@ -67,11 +67,24 @@ let controller = {
             resolve("empty");
         }
     })
+    let findAllFollowers = new Promise(function(resolve,reject){
+        db.Followers.findAll({
+            where:{followed:req.params.id},
+            raw:true
+        })
+        .then(function(data){
+            console.log(data);
+            resolve(data)
+        })
+        .catch(function(err){
+            console.log(err);
+        })
+    })
     
-    Promise.all([findUser,findPosts,findComments,findFollow])
+    Promise.all([findUser,findPosts,findComments,findFollow,findAllFollowers])
     .then(function(values){
         
-        return res.render('profile', {title:"Perfil", userData:values[0].dataValues, posts:values[1], comments:values[2],follows:values[3]})
+        return res.render('profile', {title:"Perfil", userData:values[0].dataValues, posts:values[1], comments:values[2],follows:values[3],followers:values[4]})
     })
     .catch(function(err){
         console.log(err);
