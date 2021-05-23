@@ -34,6 +34,14 @@ module.exports = function(sequelize, dataTypes){
             onDelete: "CASCADE",
             
         })
+        Followers.belongsTo(models.Users,{
+            foreignKey:'followed',
+            as:"userFollowed"
+        })
+        Followers.belongsTo(models.Users,{
+            foreignKey:"follower",
+            as:"userFollower"
+        })
         
         
     }
