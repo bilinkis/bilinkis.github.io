@@ -50,6 +50,10 @@ module.exports = function(sequelize, dataTypes){
             foreignKey:'productId',
             allowNull: false,
         })
+        Posts.hasMany(models.Followers,{
+            foreignKey:'follower',
+            allowNull:'false'
+        })
     }
    return Posts;
 }

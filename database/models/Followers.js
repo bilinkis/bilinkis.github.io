@@ -27,13 +27,14 @@ module.exports = function(sequelize, dataTypes){
 
    const Followers = sequelize.define(alias, cols, config);
     Followers.associate = function(models) {
-        Followers.belongsTo(models.Users,{
-            foreignKey:'follower',
-            as: "User",
+        Followers.hasMany(models.Posts,{
+            foreignKey:'userId',
+            as: "Posts",
             allowNull:false,
             onDelete: "CASCADE",
             
         })
+        
         
     }
    return Followers;
