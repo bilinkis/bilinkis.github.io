@@ -32,6 +32,13 @@ productId INT UNSIGNED,
 FOREIGN KEY (userId) REFERENCES users(id),
 FOREIGN KEY (productId) REFERENCES posts(id)
 );
+CREATE TABLE followers (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    followed INT UNSIGNED,
+    follower INT UNSIGNED,
+    FOREIGN KEY (followed) REFERENCES users(id),
+    FOREIGN KEY (follower) REFERENCES users(id)
+);
 
 INSERT INTO users
 VALUES (DEFAULT, 'Bautista', 'Abella', 'bautiabella@hotmail.com', '123345678', 'Prefiero no responder', 'bauticapo123', '2001-08-23', ''),(DEFAULT, 'Sofia', 'Ruiz', 'sofiruiz12@gmail.com', '123345678', 'Mujer', 'sofitalinda89', '2003-02-06',''), (DEFAULT, 'Josefina', 'Staudenmaier', 'jochust@gmail.com', '1154701208', 'Mujer', 'cangurito23', '2001-08-12',''), (DEFAULT, 'Nicolas', 'Bilinkis', 'nico@bilinkis.com', '12345648', 'Hombre', 'amogithub', '1999-08-03',''), (DEFAULT, 'Carlos', 'Perez', 'charliperez@hotmail.com', '1554789699', 'Hombre', 'charlikari', '1970-11-25','');
