@@ -215,6 +215,39 @@ let controller = {
     }else{
         res.cookie("error", "needLogin", {maxAge:1000});return res.redirect('/login');
     }
+    },
+    followers:function(req,res){
+        let findUser = new Promise(function(resolve,reject){
+            db.Users.findByPk(req.params.id)
+            .then(function(data){
+                if(data!==null){
+                resolve(data);
+            }else{
+                return res.redirect('/404')
+            }
+            })
+            .catch(function(err){
+                reject();
+            })
+        });
+        let findFollowers = new Promise(function(resolve,reject){
+            db.Followers.findAll({
+                where:{followed:req.params.id},
+                raw:true,
+                include:[{model:db.Users, as:"User"}]
+            })
+            .then(function(data){
+                resolve(data)
+            })
+            .catch(function(err){
+                console.log(err)
+                reject()
+            })
+        })
+        Promise.all([findUser, findFollowers])
+        .then(function(values){
+            return res.render("followers",{title:"Seguidores",userData:values[0],followers:values[1]})
+        })
     }
 }
 module.exports = controller;
