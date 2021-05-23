@@ -25,7 +25,7 @@
 			
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"><a href="/profile/<%= userData.id %>"><%= userData.name + " " + userData.lastName%></a> </h1>
+					<h1 class="main-title"><a href="/profile/<%= userData.id %>"><%= userData.name + " " + userData.lastName%> </a></h1>
 					
 					
 				
@@ -45,31 +45,35 @@
 		<div class="row">
 			<div class="col-12">
 				<% if(locals.loggedIn == true && locals.user.id == userData.id){ %>
-				<h2 class="products-title">Mis seguidores</h2>
+				<h2 class="products-title">Mis seguidos</h2>
 				<% }else{ %>
-					<h2 class="products-title">Seguidores</h2>
+					<h2 class="products-title">Seguidos</h2>
 				<%} %> 
 			</div>
 			<!-- Show mis productos -->
 			
-<% for(let i=0;i<followers.length;i++){ %>
-    <% console.log(followers) %> 
+<% for(let i=0;i<following.length;i++){ %>
+    <% console.log(following) %> 
     <div class="col-12 col-sm-6 col-lg-3">
         <section class="product-box">
-            <a href="/profile/<%= followers[i].follower %>">
+            <a href="/profile/<%= following[i]["userFollowed.id"] %>">
                 <figure class="product-box_image">
-                    <img src="/images/users/<%= followers[i]['userFollower.image'] %>" alt="cafetera moulinex">
+					<%if(following[i]['userFollowed.image'] !== ""){%>
+                    <img src="/images/users/<%= following[i]['userFollowed.image'] %>" alt="cafetera moulinex">
+				<%}else{%>
+					<img src="/images/users/nicobilinkis.png" alt="cafetera moulinex">
+				<%}%>
                 </figure>
                 <article class="product-box_data">
-                    <h2><%= followers[i]['userFollower.name'] + " " +  followers[i]['userFollower.lastName'] %> </h2>
+                    <h2><%= following[i]['userFollowed.name'] + " " +  following[i]['userFollowed.lastName'] %> </h2>
                     
                 </article>
             </a>
         </section>
     </div>
     <% } %> 
-			<% if(followers.length == 0){%>
-                <h2>El usuario no tiene seguidores todavía.</h2>
+			<% if(following.length == 0){%>
+                <h2>El usuario no sigue a nadie todavía.</h2>
             <%}%>
 			
 		</div>
