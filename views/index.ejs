@@ -69,7 +69,8 @@
 
 		</div>
 	</div>
-	<% if(locals.loggedIn == true){ %>
+	<% console.log(followingPosts.length) %>
+	<% if(locals.loggedIn == true && followingPosts.length !== 0){ %>
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
