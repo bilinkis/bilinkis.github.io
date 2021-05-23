@@ -66,8 +66,41 @@
 					</section>
 				</div>
 				<% } %> 
+
 		</div>
 	</div>
+	<% if(locals.loggedIn == true){ %>
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Seguidos</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+		<%	for(let i=0;i<followingPosts.length;i++){ %>
+			<% if(followingPosts[i]["Posts.id"]!== null){ %>
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="/product/<%= followingPosts[i]["Posts.id"] %>" >
+						<figure class="product-box_image">
+							<img src="/images/products/<%=followingPosts[i]["Posts.image"]%>" alt="cafetera moulinex">
+						</figure>
+						<article class="product-box_data">
+							<h2><%=  followingPosts[i]["Posts.title"]  %></h2>
+							
+							<p style="font-weight: bold;"><a href="/profile/<%=followingPosts[i]["Posts.userId"]%>">Creado por %></a></p>
+							<p><%= followingPosts[i]["Posts.description"] %></p>
+							<p>Comentarios: <%= followingPosts[i]["Posts.comments"] %> </p>
+						</article>
+					</a>
+				</section>
+			</div>
+			
+		<%}%>
+		<% } %> 
+				
+		</div>
+	</div>
+<% } %>
 	<!-- /Más comentados -->
 
 	<%- include('./partials/footer.ejs') %> 

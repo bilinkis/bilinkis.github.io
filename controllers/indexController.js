@@ -10,7 +10,7 @@ let controller = {
             include:[{model:db.Users,as:"user"}]
     })
             .then(function(data){
-                console.log(data)
+                
             resolve(data);
             })
             .catch(function(err){
@@ -34,10 +34,29 @@ let controller = {
                 console.log(err);
             })
         })
-        Promise.all([findLatestProducts,findMostCommented])
+        let findPostsByFollowed = new Promise(function(resolve,reject){
+            if(res.locals.loggedIn == true){
+            db.Followers.findAll({
+                raw:true,
+                where:{follower:res.locals.user.id},
+                include:{model:db.Posts,as:"Posts"}
+            })
+            .then(function(following){
+            console.log(following)
+            resolve(following)
+            })
+            .catch(function(err){
+                console.log(err);
+                reject();
+            })
+        } else{
+            resolve("notLogged")
+        }
+        })
+        Promise.all([findLatestProducts,findMostCommented,findPostsByFollowed])
         .then(function(values){
-            console.log(values[0].title)
-            return res.render('index', {title: 'Home', latestProducts:values[0], mostCommented:values[1]});
+            
+            return res.render('index', {title: 'Home', latestProducts:values[0], mostCommented:values[1],followingPosts:values[2]});
         })
         .catch(function(err){
             console.log(err);
