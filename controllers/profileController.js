@@ -171,6 +171,7 @@ let controller = {
         })
     },
     follow: function(req,res){
+        if(res.locals.loggedIn == true){
         console.log(req.body);
         console.log(res.locals.user.id)
         db.Followers.create({
@@ -183,6 +184,24 @@ let controller = {
         .catch(function(err){
             console.log(err)
         })
+    } else{
+        res.cookie("error", "needLogin", {maxAge:1000});return res.redirect('/login');
+    }
+    },
+    unfollow: function(req,res){
+        if(res.locals.loggedIn == true){
+        db.Followers.destroy({
+            where:{followed:req.body.followed,follower:res.locals.user.id}
+        })
+        .then(function(data){
+            return res.redirect(req.headers.referer);
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+    }else{
+        res.cookie("error", "needLogin", {maxAge:1000});return res.redirect('/login');
+    }
     }
 }
 module.exports = controller;
