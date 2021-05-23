@@ -158,11 +158,15 @@ let controller = {
             where:{userId:req.body.userId}
         })
         .then(function(){
+            db.Followers.destroy({
+                where:{follower:req.body.userId}
+            })
+        })
+        .then(function(){
             db.Posts.destroy({
                 where: {
                     userId: req.body.userId
-                },
-                include:[{model:db.Comments, as:"Comments"}]
+                }
             })
         })
         .then(function(){
@@ -177,7 +181,8 @@ let controller = {
         })
         
         .then(function(){
-            return res.redirect('/')
+            res.cookie("error", "erase", {maxAge:1000});
+            return res.redirect('/register')
         })
         .catch(function(err){
             console.log(err)

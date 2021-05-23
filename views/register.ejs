@@ -13,7 +13,9 @@
 		<% } else{ %>
 			<%- include('./partials/headerLogueado.ejs') %> 
 		<% } %>
-
+<% if(error == "erase"){ %>
+	<h2 style="text-align:center; color:green;">Borraste tu cuenta correctamente. Si querés, podés volver a registrarte.</h2>
+<% } %>
 		<%- include('./partials/form.ejs', {path : path}) %>
 
 	<!-- Novedades -->

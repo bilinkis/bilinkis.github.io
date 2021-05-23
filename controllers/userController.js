@@ -31,6 +31,7 @@ let controller = {
       return res.render("register", {
         title: "Página de register",
         path: req.originalUrl,
+        error: req.cookies.error
       });
     } else {
       return res.redirect("/profile/" + res.locals.user.id);
