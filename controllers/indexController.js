@@ -39,7 +39,7 @@ let controller = {
             db.Followers.findAll({
                 raw:true,
                 where:{follower:res.locals.user.id},
-                include:{model:db.Posts,as:"Posts"}
+                include:[{model:db.Posts,as:"Posts"},{model:db.Users,as:"author"}]
             })
             .then(function(following){
             console.log(following)
