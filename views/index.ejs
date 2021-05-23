@@ -70,12 +70,13 @@
 		</div>
 	</div>
 	<% console.log(followingPosts.length) %>
-	<% if(locals.loggedIn == true && followingPosts.length !== 0){ %>
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Seguidos</h2>
-			</div>
+	<% if(locals.loggedIn == true){ %>
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Seguidos</h2>
+				</div>
+		<% if(followingPosts.length !== 0){ %>
 			<!-- Show the "ultimos" products -->
 		<%	for(let i=0;i<followingPosts.length;i++){ %>
 			<% if(followingPosts[i]["Posts.id"]!== null){ %>
@@ -101,6 +102,9 @@
 				
 		</div>
 	</div>
+<% }else{%>
+<h2>No estás siguiendo a nadie todavía.</h2>
+<%} %>
 <% } %>
 	<!-- /Más comentados -->
 

@@ -80,11 +80,24 @@ let controller = {
             console.log(err);
         })
     })
+    let findAllFollowed = new Promise(function(resolve,reject){
+        db.Followers.findAll({
+            where:{follower:req.params.id},
+            raw:true
+        })
+        .then(function(data){
+            resolve(data)
+        })
+        .catch(function(err){
+            reject();
+            console.log(err)
+        })
+    })
     
-    Promise.all([findUser,findPosts,findComments,findFollow,findAllFollowers])
+    Promise.all([findUser,findPosts,findComments,findFollow,findAllFollowers,findAllFollowed])
     .then(function(values){
         
-        return res.render('profile', {title:"Perfil", userData:values[0].dataValues, posts:values[1], comments:values[2],follows:values[3],followers:values[4]})
+        return res.render('profile', {title:"Perfil", userData:values[0].dataValues, posts:values[1], comments:values[2],follows:values[3],followers:values[4],following:values[5]})
     })
     .catch(function(err){
         console.log(err);
@@ -239,7 +252,7 @@ let controller = {
             db.Followers.findAll({
                 where:{followed:req.params.id},
                 raw:true,
-                include:[{model:db.Users, as:"User"}]
+                include:[{model:db.Users, as:"userFollower"}]
             })
             .then(function(data){
                 resolve(data)
@@ -252,6 +265,39 @@ let controller = {
         Promise.all([findUser, findFollowers])
         .then(function(values){
             return res.render("followers",{title:"Seguidores",userData:values[0],followers:values[1]})
+        })
+    },
+    following:function(req,res){
+        let findUser = new Promise(function(resolve,reject){
+            db.Users.findByPk(req.params.id)
+            .then(function(data){
+                if(data!==null){
+                resolve(data);
+            }else{
+                return res.redirect('/404')
+            }
+            })
+            .catch(function(err){
+                reject();
+            })
+        });
+        let findFollowers = new Promise(function(resolve,reject){
+            db.Followers.findAll({
+                where:{follower:req.params.id},
+                raw:true,
+                include:[{model:db.Users, as:"userFollowed"}]
+            })
+            .then(function(data){
+                resolve(data)
+            })
+            .catch(function(err){
+                console.log(err)
+                reject()
+            })
+        })
+        Promise.all([findUser, findFollowers])
+        .then(function(values){
+            return res.render("following",{title:"Seguidos",userData:values[0],following:values[1]})
         })
     }
 }
