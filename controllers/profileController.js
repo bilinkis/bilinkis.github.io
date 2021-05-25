@@ -210,7 +210,31 @@ let controller = {
             follower: res.locals.user.id,
         })
         .then(function(data){
-            return res.redirect(req.headers.referer);
+            db.Users.findOne({
+                raw: true, 
+                where: {id:req.body.followed}
+            })
+                .then(function (followedUser){
+                    db.Users.update({
+                        followers: followedUser.followers +1
+                    },
+                    {
+                        where: {id:req.body.followed}
+                    })
+                    .then (function(){
+                        db.Users.update({
+                            following: res.locals.user.following +1
+                        },
+                        {
+                            where: {id: res.locals.user.id}
+                        })
+                        .then(function(){
+                            return res.redirect(req.headers.referer);
+                        })
+                    })
+                })
+            
+           
         })
         .catch(function(err){
             console.log(err)

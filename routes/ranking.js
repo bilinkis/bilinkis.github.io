@@ -1,5 +1,5 @@
 let express = require('express');
-const indexController = require('../controllers/indexController');
+const rankingController = require('../controllers/rankingController');
 let router = express.Router();
 
 router.get('/', rankingController.main);

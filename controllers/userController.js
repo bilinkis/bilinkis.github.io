@@ -103,6 +103,10 @@ let controller = {
             password: passEncriptada,
             birthday: data.birthday,
             image: req.file.filename,
+            followers: 0,
+            following: 0,
+            commentsPosted: 0,
+            commentsReceived: 0,
           })
           .then(function(){
             res.cookie("error", "registerOk", {maxAge:1000});

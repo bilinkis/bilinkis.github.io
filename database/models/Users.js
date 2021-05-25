@@ -1,3 +1,5 @@
+const { followers } = require("../../controllers/profileController");
+
 module.exports = function(sequelize, dataTypes){
 
     //Definir un alias.
@@ -33,6 +35,18 @@ module.exports = function(sequelize, dataTypes){
         },
         image:{
             type:dataTypes.STRING
+        },
+        followers:{
+            type: dataTypes.INTEGER,
+        },
+        following:{
+            type: dataTypes.INTEGER,
+        },
+        commentsPosted:{
+            type: dataTypes.INTEGER,
+        },
+        commentsReceived:{
+            type: dataTypes.INTEGER,
         }
     }
 
