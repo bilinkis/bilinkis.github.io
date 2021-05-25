@@ -1,5 +1,3 @@
-const { followers } = require("../../controllers/profileController");
-
 module.exports = function(sequelize, dataTypes){
 
     //Definir un alias.

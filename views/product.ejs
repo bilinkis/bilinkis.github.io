@@ -43,8 +43,11 @@
 
 						<% for(let i=0;i<comments.length;i++){ %> 
 						<article>
-							
+							<% if(comments[i]["user.image"] !== ""){ %>
 							<img src="/images/users/<%= comments[i]["user.image"] %>" alt="">
+							<% } else{%>
+								<img src="/images/users/nicobilinkis.png" alt="">
+								<% } %>
 							<div class="data">
 								<p class="user">
 								<strong> <a href="/profile/<%= comments[i]["user.id"]%>"><b><%= comments[i]["user.name"] + " " + comments[i]["user.lastName"] %></b> </a> </strong>
