@@ -37,6 +37,14 @@ FOREIGN KEY (userId) REFERENCES users(id),
 FOREIGN KEY (productId) REFERENCES posts(id)
 );
 
+CREATE TABLE followers (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    followed INT UNSIGNED,
+    follower INT UNSIGNED,
+    FOREIGN KEY (followed) REFERENCES users(id),
+    FOREIGN KEY (follower) REFERENCES users(id)
+);
+
 INSERT INTO users
 VALUES (DEFAULT, 'Bautista', 'Abella', 'bautiabella@hotmail.com', '123345678', 'Prefiero no responder', 'bauticapo123', '2001-08-23','', 0, 0, 0, 0),(DEFAULT, 'Sofia', 'Ruiz', 'sofiruiz12@gmail.com', '123345678', 'Mujer', 'sofitalinda89', '2003-02-06','', 0, 0, 0, 0), (DEFAULT, 'Josefina', 'Staudenmaier', 'jochust@gmail.com', '1154701208', 'Mujer', 'cangurito23', '2001-08-12','', 0, 0, 0, 0), (DEFAULT, 'Nicolas', 'Bilinkis', 'nico@bilinkis.com', '12345648', 'Hombre', 'amogithub', '1999-08-03','', 0, 0, 0, 0), (DEFAULT, 'Carlos', 'Perez', 'charliperez@hotmail.com', '1554789699', 'Hombre', 'charlikari', '1970-11-25','', 0, 0, 0, 0);
 
@@ -54,8 +62,6 @@ VALUES (DEFAULT, 'Teg Clásico', 'Disfrutá de una apasionante acción bélica d
 
 INSERT INTO comments
 VALUES (DEFAULT,'1','Muy buen producto!',DEFAULT,'1'),(DEFAULT,'2','Gran producto!',DEFAULT,'2'),(DEFAULT,'3','Recomendado',DEFAULT,'3'),(DEFAULT,'4','Muy buen producto!',DEFAULT,'4'),(DEFAULT,'5','No está bueno!',DEFAULT,'5'),(DEFAULT,'5','Buen producto!',DEFAULT,'6'),(DEFAULT,'1','No me gustó',DEFAULT,'7'),(DEFAULT,'2','Malisimo!',DEFAULT,'8'),(DEFAULT,'3','Muy buen producto!',DEFAULT,'9'),(DEFAULT,'4','Buenisimo',DEFAULT,'10'),(DEFAULT,'3','Muy buen producto!',DEFAULT,'1'),(DEFAULT,'2','Muy buen producto!',DEFAULT,'2'),(DEFAULT,'4','buen producto!',DEFAULT,'3'),(DEFAULT,'5','pésimo!',DEFAULT,'4'),(DEFAULT,'1','Muy buen producto!',DEFAULT,'5'),(DEFAULT,'5','terrible producto!',DEFAULT,'6'),(DEFAULT,'2','muy conforme',DEFAULT,'7'),(DEFAULT,'1','No me gustó para nada',DEFAULT,'8'),(DEFAULT,'4','Muy buen producto!',DEFAULT,'9'),(DEFAULT,'1','Recomendado para mayores de 5',DEFAULT,'10'),(DEFAULT,'2','buen producto',DEFAULT,'1'),(DEFAULT,'3','me gustó',DEFAULT,'2'),(DEFAULT,'4','tremendo!',DEFAULT,'3'),(DEFAULT,'1','malisimo',DEFAULT,'4'),(DEFAULT,'4','re bueno',DEFAULT,'5'),(DEFAULT,'2','recomendable para todos',DEFAULT,'6'),(DEFAULT,'5','a mi mamá no le gustó',DEFAULT,'7'),(DEFAULT,'1','buen regalo',DEFAULT,'8'),(DEFAULT,'5','Super divertido',DEFAULT,'9'),(DEFAULT,'3','buenisimo',DEFAULT,'10'),(DEFAULT,'1','Muy buen producto!',DEFAULT,'1'),(DEFAULT,'2','buen producto!',DEFAULT,'2'),(DEFAULT,'3','flojo producto!',DEFAULT,'3'),(DEFAULT,'4','muy malo',DEFAULT,'4'),(DEFAULT,'5','compraría de nuevo!',DEFAULT,'5'),(DEFAULT,'1','no volvería a comprar',DEFAULT,'6'),(DEFAULT,'2','se lo regale a mi hijo y no le gusto',DEFAULT,'7'),(DEFAULT,'3','me encantó!',DEFAULT,'8'),(DEFAULT,'4','re mil bueno',DEFAULT,'9'),(DEFAULT,'5','muy largas las instrucciones',DEFAULT,'10');
-
-
 
 
 
