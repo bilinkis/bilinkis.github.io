@@ -11,6 +11,8 @@ let productsRouter = require('./routes/products');
 let profileRouter = require('./routes/profile');
 let registerRouter = require('./routes/register');
 let searchRouter = require('./routes/search');
+let rankingRouter = require('./routes/ranking');
+
 let commentsRouter = require('./routes/comments');
 let session = require('express-session');
 const db = require('./database/models');
@@ -76,6 +78,8 @@ app.use('/profile', profileRouter);
 app.use('/register', registerRouter);
 app.use('/search', searchRouter);
 app.use('/comment', commentsRouter);
+app.use('/ranking', rankingRouter);
+
 
 
 // catch 404 and forward to error handler
