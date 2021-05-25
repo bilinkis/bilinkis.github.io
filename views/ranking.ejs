@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./partials/head.ejs') %> 
+<body>
+	
+	<% if(locals.loggedIn == null){ %>
+	<%- include('./partials/header.ejs') %> 
+	<% } else{ %>
+		<%- include('./partials/headerLogueado.ejs') %> 
+	<% } %>
+	
+	<!-- Banner -->
+	<div class="container">
+		<img src="/images/banner.jpg" alt="Banner de ofertas">
+	</div>
+	<!-- /Banner -->
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Usuarios con más seguidores</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+			<% for(let i=0;i<latestProducts.length;i++){ %> 
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="/product/<%= latestProducts[i].id %>" >
+						<figure class="product-box_image">
+							<img src="/images/products/<%=latestProducts[i].image%>" alt="cafetera moulinex">
+						</figure>
+						<article class="product-box_data">
+							<h2><%=  latestProducts[i].title  %></h2>
+							
+							<p style="font-weight: bold;"><a href="/profile/<%=latestProducts[i]["user.id"]%>">Creado por <%= latestProducts[i]["user.name"] + " " + latestProducts[i]["user.lastName"] %></a></p>
+							<p><%= latestProducts[i].description %></p>
+							<p>Comentarios: <%= latestProducts[i].comments %> </p>
+						</article>
+					</a>
+				</section>
+			</div>
+			<% } %> 
+	<!-- /Novedades -->
+	<!-- Más comentados -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Más comentados</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+			<% for(let i=0;i<mostCommented.length;i++){ %> 
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="/product/<%= mostCommented[i].id %>" >
+							<figure class="product-box_image">
+								<img src="/images/products/<%=mostCommented[i].image%>" alt="cafetera moulinex">
+							</figure>
+							<article class="product-box_data">
+								<h2><%=  mostCommented[i].title  %></h2>
+								
+								<p style="font-weight: bold;"><a href="/profile/<%=mostCommented[i]["user.id"]%>">Creado por <%= mostCommented[i]["user.name"] + " " + mostCommented[i]["user.lastName"] %></a></p>
+								<p><%= mostCommented[i].description %></p>
+								<p>Comentarios: <%= mostCommented[i].comments %> </p>
+							</article>
+						</a>
+					</section>
+				</div>
+				<% } %> 
+
+		</div>
+	</div>
+	<% console.log(followingPosts.length) %>
+	<% if(locals.loggedIn == true){ %>
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Seguidos</h2>
+				</div>
+		<% if(followingPosts.length !== 0){ %>
+			<!-- Show the "ultimos" products -->
+		<%	for(let i=0;i<followingPosts.length;i++){ %>
+			
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="/product/<%= followingPosts[i]["Posts.id"] %>" >
+						<figure class="product-box_image">
+							<img src="/images/products/<%=followingPosts[i]["Posts.image"]%>" alt="cafetera moulinex">
+						</figure>
+						<article class="product-box_data">
+							<h2><%=  followingPosts[i]["Posts.title"]  %></h2>
+							
+							<p style="font-weight: bold;"><a href="/profile/<%=followingPosts[i]["Posts.userId"]%>">Creado por <%= followingPosts[i]["author.name"] + " " + followingPosts[i]["author.lastName"]%></a></p>
+							<p><%= followingPosts[i]["Posts.description"] %></p>
+							<p>Comentarios: <%= followingPosts[i]["Posts.comments"] %> </p>
+						</article>
+					</a>
+				</section>
+			</div>
+			
+		<%}%>
+		
+				
+		</div>
+	</div>
+<% }else{%>
+<h2>No estás siguiendo a nadie todavía.</h2>
+<%} %>
+<% } %>
+	<!-- /Más comentados -->
+
+	<%- include('./partials/footer.ejs') %> 
+
+</body>	
+</html>
