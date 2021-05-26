@@ -32,7 +32,6 @@
 						<article class="product-box_data">
 							<h2><%= mostFollowed[i]["user.name"] + " " + mostFollowed[i]["user.lastName"] %></h2>
 							<p style="font-weight: bold;"><a href="/profile/<%=mostFollowed[i]["user.id"]%>">Seguidores: <%= mostFollowed[i].followers %> </a></p>
-							<p>Siguiendo: <%= mostFollowed[i].following %> </p>
 						</article>
 					</a>
 				</section>
@@ -43,22 +42,19 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Más comentados</h2>
+				<h2 class="products-title">Usuarios que siguen más personas</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<% for(let i=0;i<mostCommented.length;i++){ %> 
+			<% for(let i=0;i<following.length;i++){ %> 
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/<%= mostCommented[i].id %>" >
+						<a href="/profile/<%= following[i].id %>" >
 							<figure class="product-box_image">
-								<img src="/images/products/<%=mostCommented[i].image%>" alt="cafetera moulinex">
+								<img src="/images/users/<%=following[i].image%>" alt="cafetera moulinex">
 							</figure>
 							<article class="product-box_data">
-								<h2><%=  mostCommented[i].title  %></h2>
-								
-								<p style="font-weight: bold;"><a href="/profile/<%=mostCommented[i]["user.id"]%>">Creado por <%= mostCommented[i]["user.name"] + " " + mostCommented[i]["user.lastName"] %></a></p>
-								<p><%= mostCommented[i].description %></p>
-								<p>Comentarios: <%= mostCommented[i].comments %> </p>
+								<h2><%= following[i]["user.name"] + " " + following[i]["user.lastName"] %></h2>
+								<p>Siguiendo: <%= following[i].following %> </p>
 							</article>
 						</a>
 					</section>
