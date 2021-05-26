@@ -17,33 +17,39 @@ let controller = {
                 },{
                     where:{id:req.body.id}
                 })
-                db.Users.findOne({
-                    raw: true,
-                    where: {id: posts.userId}
-                })
                 .then(function(){
-                    db.Users.update({
-                    commentsReceived: req.body.commentsReceived +1
-
-                    },
-                    {
-                        where: {id: post.userId}
+                    db.Users.findOne({
+                        raw:true,
+                        where:{id:post.userId}
                     })
-                    .then(function(){
+                    .then(function(postUser){
                         db.Users.update({
-                            commentsPosted: res.locals.user.commentsPosted +1
-                        },
-                        {
-                            where: {id: res.locals.user.id}
-                        })
-                        .then(function(){
-                            return res.redirect(req.headers.referer)
+                            commentsReceived: postUser.commentsReceived +1
+        
+                            },
+                            {
+                                where: {id: postUser.id}
+                            })
+                            .then(function(){
+                                db.Users.update({
+                                    commentsPosted: res.locals.user.commentsPosted +1
+                                },
+                                {
+                                    where: {id: res.locals.user.id}
+                                })
+                                .then(function(){
+                                    return res.redirect(req.headers.referer)
+                            })
                     })
+                })
+                
+                
+                    
+                        
                     })
                 })
             })
             
-        })
     },
     delete: function(req,res){ 
         console.log(req.body)
