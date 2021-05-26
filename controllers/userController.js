@@ -107,6 +107,7 @@ let controller = {
             following: 0,
             commentsPosted: 0,
             commentsReceived: 0,
+            postsQuantity: 0
           })
           .then(function(){
             res.cookie("error", "registerOk", {maxAge:1000});
