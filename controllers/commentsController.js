@@ -10,14 +10,36 @@ let controller = {
         })
         .then(function(data){
             db.Posts.findByPk(req.body.id)
+           
             .then(function(post){
                 db.Posts.update({
                     comments: post.dataValues.comments + 1,
                 },{
                     where:{id:req.body.id}
                 })
+                db.Users.findOne({
+                    raw: true,
+                    where: {id: posts.userId}
+                })
                 .then(function(){
-                    res.redirect(req.headers.referer)
+                    db.Users.update({
+                    commentsReceived: req.body.commentsReceived +1
+
+                    },
+                    {
+                        where: {id: post.userId}
+                    })
+                    .then(function(){
+                        db.Users.update({
+                            commentsPosted: res.locals.user.commentsPosted +1
+                        },
+                        {
+                            where: {id: res.locals.user.id}
+                        })
+                        .then(function(){
+                            return res.redirect(req.headers.referer)
+                    })
+                    })
                 })
             })
             
