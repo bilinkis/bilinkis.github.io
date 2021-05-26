@@ -113,10 +113,10 @@ let controller = {
                 postsQuantity: res.locals.user.postsQuantity +1,
             },
             {
-                where: {id:req.body.id}
+                where: {id:res.locals.user.id}
             })
             .then(function(){
-                res.redirect('/product/'+ data.dataValues.id);
+                res.redirect('/product/'+ postsQuantity.dataValues.id);
             })
     
         })

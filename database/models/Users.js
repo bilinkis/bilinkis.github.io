@@ -45,6 +45,9 @@ module.exports = function(sequelize, dataTypes){
         },
         commentsReceived:{
             type: dataTypes.INTEGER,
+        },
+        postsQuantity:{
+            type: dataTypes.INTEGER,
         }
     }
 
@@ -76,6 +79,7 @@ module.exports = function(sequelize, dataTypes){
             foreignKey:'followed',
             as:'followed'
         })
+        
     }
    return Users;
 }
