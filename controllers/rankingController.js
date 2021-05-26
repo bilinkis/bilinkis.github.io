@@ -76,7 +76,7 @@ let controller = {
         })*/
         Promise.all([mostFollowed, following, mostCommentsPosted, mostCommentsReceived])
         .then(function(values){
-            return res.render('ranking', {title: 'Ranking de usuarios', mostFollowed:[0], following:[1], mostCommentsPosted:[2], mostCommentsReceived:[3]})
+            return res.render('ranking', {title: 'Ranking de usuarios', mostFollowed: values[0], following:values[1], mostCommentsPosted:values[2], mostCommentsReceived: values[3]})
         })
         .catch(function(error){
             console.log(error);
