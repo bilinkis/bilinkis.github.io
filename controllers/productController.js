@@ -108,11 +108,17 @@ let controller = {
             userId: res.locals.user.id,
             comments:0,
         })
-        .then(function(data){
-            console.log(data);
-        
+        .then(function(postsQuantity){
+            db.Users.update({
+                postsQuantity: res.locals.user.postsQuantity +1,
+            },
+            {
+                where: {id:req.body.id}
+            })
+            .then(function(){
+                res.redirect('/product/'+ data.dataValues.id);
+            })
     
-            res.redirect('/product/'+ data.dataValues.id);
         })
         .catch(function(err){
             console.log(err)
