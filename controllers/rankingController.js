@@ -60,7 +60,7 @@ let controller = {
             })
         })
         let mostPosts = new Promise(function(resolve, reject){
-            db.Posts.findAll({
+            db.Users.findAll({
                 raw: true, 
                 limit: 8,
                 order: [ ['postsQuantity', 'DESC']],
