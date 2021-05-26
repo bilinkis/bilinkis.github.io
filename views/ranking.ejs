@@ -21,7 +21,6 @@
 			<div class="col-12">
 				<h2 class="products-title">Usuarios con más seguidores</h2>
 			</div>
-			<!-- Show the "ultimos" products -->
 			<% for(let i=0;i<mostFollowed.length;i++){ %> 
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
@@ -30,8 +29,8 @@
 							<img src="/images/users/<%=mostFollowed[i].image%>" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= mostFollowed[i]["user.name"] + " " + mostFollowed[i]["user.lastName"] %></h2>
-							<p style="font-weight: bold;"><a href="/profile/<%=mostFollowed[i]["user.id"]%>">Seguidores: <%= mostFollowed[i].followers %> </a></p>
+							<h2><%= mostFollowed[i].name + " " + mostFollowed[i].lastName %></h2>
+							<p style="font-weight: bold;">Seguidores: <%= mostFollowed[i].followers %></p>
 						</article>
 					</a>
 				</section>
@@ -51,8 +50,8 @@
 								<img src="/images/users/<%=following[i].image%>" alt="cafetera moulinex">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= following[i]["user.name"] + " " + following[i]["user.lastName"] %></h2>
-								<p>Siguiendo: <%= following[i].following %> </p>
+								<h2><%= following[i].name + " " + following[i].lastName %></h2>
+								<p style="font-weight: bold;">Siguiendo: <%= following[i].following %> </p>
 							</article>
 						</a>
 					</section>
@@ -76,8 +75,8 @@
 								<img src="/images/users/<%=mostCommentsPosted[i].image%>" alt="cafetera moulinex">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= mostCommentsPosted[i]["user.name"] + " " + mostCommentsPosted[i]["user.lastName"] %></h2>
-								<p>Comentarios publicados: <%= mostCommentsPosted[i].commentsPosted %> </p>
+								<h2><%= mostCommentsPosted[i].name + " " + mostCommentsPosted[i].lastName %></h2>
+								<p style="font-weight: bold;">Comentarios publicados: <%= mostCommentsPosted[i].commentsPosted %> </p>
 							</article>
 						</a>
 					</section>
@@ -98,8 +97,8 @@
 								<img src="/images/users/<%=mostCommentsReceived[i].image%>" alt="cafetera moulinex">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= mostCommentsReceived[i]["user.name"] + " " + mostCommentsReceived[i]["user.lastName"] %></h2>
-								<p>Comentarios recibidos: <%= mostCommentsReceived[i].commentsReceived %> </p>
+								<h2><%= mostCommentsReceived[i].name + " " + mostCommentsReceived[i]lastName %></h2>
+								<p style="font-weight: bold;">Comentarios recibidos: <%= mostCommentsReceived[i].commentsReceived %> </p>
 							</article>
 						</a>
 					</section>
