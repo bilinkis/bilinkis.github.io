@@ -59,11 +59,11 @@ let controller = {
                 console.log(error);
             })
         })
-        /*let mostPosts = new Promise(function(resolve, reject){
+        let mostPosts = new Promise(function(resolve, reject){
             db.Posts.findAll({
                 raw: true, 
                 limit: 8,
-                order: [ ['', 'DESC']],
+                order: [ ['postsQuantity', 'DESC']],
                 include:[{}]
             })
             .then(function(data){
@@ -73,10 +73,10 @@ let controller = {
                 reject();
                 console.log(error);
             })
-        })*/
-        Promise.all([mostFollowed, following, mostCommentsPosted, mostCommentsReceived])
+        })
+        Promise.all([mostFollowed, following, mostCommentsPosted, mostCommentsReceived, mostPosts])
         .then(function(values){
-            return res.render('ranking', {title: 'Ranking de usuarios', mostFollowed: values[0], following:values[1], mostCommentsPosted:values[2], mostCommentsReceived: values[3]})
+            return res.render('ranking', {title: 'Ranking de usuarios', mostFollowed: values[0], following:values[1], mostCommentsPosted:values[2], mostCommentsReceived: values[3], mostPosts: values[4]})
         })
         .catch(function(error){
             console.log(error);
