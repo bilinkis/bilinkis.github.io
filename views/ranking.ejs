@@ -32,10 +32,10 @@
 									<img src="/images/users/nicobilinkis.png" alt="">
 									<% } %>						</figure>
 						<article class="product-box_data">
-							<h2><%= mostFollowed[i].name + " " + mostFollowed[i].lastName %></h2>
-							<p style="font-weight: bold;">Seguidores: <%= mostFollowed[i].followers %></p>
+							<h2><%= mostFollowed[i].name + " " + mostFollowed[i].lastName %></h2></a>
+							<a href="/profile/<%= mostFollowed[i].id %>/followers"><p style="font-weight: bold;">Seguidores: <%= mostFollowed[i].followers %></p></a>
 						</article>
-					</a>
+					
 				</section>
 			</div>
 			<% } %> 
@@ -55,11 +55,12 @@
 									<% } else{%>
 										<img src="/images/users/nicobilinkis.png" alt="">
 										<% } %>							</figure>
+									</a>
 							<article class="product-box_data">
 								<h2><%= following[i].name + " " + following[i].lastName %></h2>
-								<p style="font-weight: bold;">Siguiendo: <%= following[i].following %> </p>
+								<a href="/profile//<%= following[i].id %>/following"><p style="font-weight: bold;">Siguiendo: <%= following[i].following %> </p></a>
 							</article>
-						</a>
+						
 					</section>
 				</div>
 				<% } %> 
