@@ -26,7 +26,7 @@
 				<section class="product-box">
 					<a href="/profile/<%= mostFollowed[i].id %>" >
 						<figure class="product-box_image">
-							<% if(comments[i]["user.image"] !== ""){ %>
+							<% if(mostFollowed[i].image !== ""){ %>
 								<img src="/images/users/<%= mostFollowed[i].image%>" alt="">
 								<% } else{%>
 									<img src="/images/users/nicobilinkis.png" alt="">
@@ -50,8 +50,8 @@
 					<section class="product-box">
 						<a href="/profile/<%= following[i].id %>" >
 							<figure class="product-box_image">
-								<% if(comments[i]["user.image"] !== ""){ %>
-									<img src="/images/users/<%= comments[i]["user.image"] %>" alt="">
+								<% if(following[i].image !== ""){ %>
+									<img src="/images/users/<%= following[i].image %>" alt="">
 									<% } else{%>
 										<img src="/images/users/nicobilinkis.png" alt="">
 										<% } %>							</figure>
@@ -78,8 +78,8 @@
 					<section class="product-box">
 						<a href="/profile/<%= mostCommentsPosted[i].id %>" >
 							<figure class="product-box_image">
-								<% if(comments[i]["user.image"] !== ""){ %>
-									<img src="/images/users/<%= comments[i]["user.image"] %>" alt="">
+								<% if(mostCommentsPosted[i].image !== ""){ %>
+									<img src="/images/users/<%= mostCommentsPosted[i].image %>" alt="">
 									<% } else{%>
 										<img src="/images/users/nicobilinkis.png" alt="">
 										<% } %>							</figure>
@@ -103,8 +103,8 @@
 					<section class="product-box">
 						<a href="/profile/<%= mostCommentsReceived[i].id %>" >
 							<figure class="product-box_image">
-								<% if(comments[i]["user.image"] !== ""){ %>
-									<img src="/images/users/<%= comments[i]["user.image"] %>" alt="">
+								<% if(mostCommentsReceived[i].image !== ""){ %>
+									<img src="/images/users/<%= mostCommentsReceived[i].image %>" alt="">
 									<% } else{%>
 										<img src="/images/users/nicobilinkis.png" alt="">
 										<% } %>
