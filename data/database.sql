@@ -11,7 +11,8 @@ image VARCHAR(100),
 followers INT UNSIGNED,
 following INT UNSIGNED,
 commentsPosted INT UNSIGNED,
-commentsReceived INT UNSIGNED
+commentsReceived INT UNSIGNED,
+postsQuantity INT UNSIGNED
 );
 
 CREATE TABLE posts (
