@@ -46,6 +46,8 @@ let controller = {
         let comments = new Promise(function(resolve,reject){
             db.Comments.findAll({
                 raw:true,
+                limit: 5,
+                order: [['id','DESC']],
                 where:{
                     productId: req.params.id,
                 },
