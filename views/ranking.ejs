@@ -26,8 +26,11 @@
 				<section class="product-box">
 					<a href="/profile/<%= mostFollowed[i].id %>" >
 						<figure class="product-box_image">
-							<img src="/images/users/<%=mostFollowed[i].image%>" alt="cafetera moulinex">
-						</figure>
+							<% if(comments[i]["user.image"] !== ""){ %>
+								<img src="/images/users/<%= mostFollowed[i].image%>" alt="">
+								<% } else{%>
+									<img src="/images/users/nicobilinkis.png" alt="">
+									<% } %>						</figure>
 						<article class="product-box_data">
 							<h2><%= mostFollowed[i].name + " " + mostFollowed[i].lastName %></h2>
 							<p style="font-weight: bold;">Seguidores: <%= mostFollowed[i].followers %></p>
@@ -47,8 +50,11 @@
 					<section class="product-box">
 						<a href="/profile/<%= following[i].id %>" >
 							<figure class="product-box_image">
-								<img src="/images/users/<%=following[i].image%>" alt="cafetera moulinex">
-							</figure>
+								<% if(comments[i]["user.image"] !== ""){ %>
+									<img src="/images/users/<%= comments[i]["user.image"] %>" alt="">
+									<% } else{%>
+										<img src="/images/users/nicobilinkis.png" alt="">
+										<% } %>							</figure>
 							<article class="product-box_data">
 								<h2><%= following[i].name + " " + following[i].lastName %></h2>
 								<p style="font-weight: bold;">Siguiendo: <%= following[i].following %> </p>
@@ -72,8 +78,11 @@
 					<section class="product-box">
 						<a href="/profile/<%= mostCommentsPosted[i].id %>" >
 							<figure class="product-box_image">
-								<img src="/images/users/<%=mostCommentsPosted[i].image%>" alt="cafetera moulinex">
-							</figure>
+								<% if(comments[i]["user.image"] !== ""){ %>
+									<img src="/images/users/<%= comments[i]["user.image"] %>" alt="">
+									<% } else{%>
+										<img src="/images/users/nicobilinkis.png" alt="">
+										<% } %>							</figure>
 							<article class="product-box_data">
 								<h2><%= mostCommentsPosted[i].name + " " + mostCommentsPosted[i].lastName %></h2>
 								<p style="font-weight: bold;">Comentarios publicados: <%= mostCommentsPosted[i].commentsPosted %> </p>
@@ -94,7 +103,11 @@
 					<section class="product-box">
 						<a href="/profile/<%= mostCommentsReceived[i].id %>" >
 							<figure class="product-box_image">
-								<img src="/images/users/<%=mostCommentsReceived[i].image%>" alt="cafetera moulinex">
+								<% if(comments[i]["user.image"] !== ""){ %>
+									<img src="/images/users/<%= comments[i]["user.image"] %>" alt="">
+									<% } else{%>
+										<img src="/images/users/nicobilinkis.png" alt="">
+										<% } %>
 							</figure>
 							<article class="product-box_data">
 								<h2><%= mostCommentsReceived[i].name + " " + mostCommentsReceived[i].lastName %></h2>
