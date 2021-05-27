@@ -130,8 +130,11 @@
 					<section class="product-box">
 						<a href="/profile/<%= mostPosts[i].id %>" >
 							<figure class="product-box_image">
-								<img src="/images/users/<%=mostPosts[i].image%>" alt="cafetera moulinex">
-							</figure>
+								<% if(mostCommentsReceived[i].image !== ""){ %>
+									<img src="/images/users/<%= mostCommentsReceived[i].image %>" alt="">
+									<% } else{%>
+										<img src="/images/users/nicobilinkis.png" alt="">
+										<% } %>							</figure>
 							<article class="product-box_data">
 								<h2><%= mostPosts[i].name + " " + mostPosts[i].lastName %></h2>
 								<p>Cantidad de publicaciones: <%= mostPosts[i].postsQuantity %> </p>
