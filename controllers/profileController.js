@@ -222,12 +222,19 @@ let controller = {
                         where: {id:req.body.followed}
                     })
                     .then (function(){
-                        db.Users.update({
-                            following: res.locals.user.following +1
-                        },
-                        {
-                            where: {id: res.locals.user.id}
+                        db.Users.findOne({
+                            raw:true,
+                            where:{id:res.locals.user.id}
                         })
+                        .then(function(followingUser){
+                            db.Users.update({
+                                following: followingUser.following +1
+                            },
+                            {
+                                where: {id: res.locals.user.id}
+                            })
+                        })
+                        
                         .then(function(){
                             return res.redirect(req.headers.referer);
                         })
