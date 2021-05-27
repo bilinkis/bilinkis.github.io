@@ -130,8 +130,8 @@
 					<section class="product-box">
 						<a href="/profile/<%= mostPosts[i].id %>" >
 							<figure class="product-box_image">
-								<% if(mostCommentsReceived[i].image !== ""){ %>
-									<img src="/images/users/<%= mostCommentsReceived[i].image %>" alt="">
+								<% if(mostPosts[i].image !== ""){ %>
+									<img src="/images/users/<%= mostPosts[i].image %>" alt="">
 									<% } else{%>
 										<img src="/images/users/nicobilinkis.png" alt="">
 										<% } %>							</figure>
