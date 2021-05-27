@@ -31,12 +31,18 @@ let controller = {
                                 where: {id: postUser.id}
                             })
                             .then(function(){
-                                db.Users.update({
-                                    commentsPosted: res.locals.user.commentsPosted +1
-                                },
-                                {
-                                    where: {id: res.locals.user.id}
+                                db.Users.findOne({
+                                    raw:true,
+                                    where:{id:res.locals.user.id}
+                                }).then(function(userPosting){
+                                    db.Users.update({
+                                        commentsPosted: userPosting.commentsPosted +1
+                                    },
+                                    {
+                                        where: {id: res.locals.user.id}
+                                    })
                                 })
+                                
                                 .then(function(){
                                     return res.redirect(req.headers.referer)
                             })
@@ -76,4 +82,4 @@ let controller = {
         })
     }
 }
-module.exports = controller; 
+module.exports = controller;
