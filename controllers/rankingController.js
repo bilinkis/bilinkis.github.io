@@ -64,7 +64,6 @@ let controller = {
                 raw: true, 
                 limit: 8,
                 order: [ ['postsQuantity', 'DESC']],
-                include:[{}]
             })
             .then(function(data){
                 resolve(data);
