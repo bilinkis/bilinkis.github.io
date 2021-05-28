@@ -24,7 +24,7 @@
 			<% for(let i=0;i<mostFollowed.length;i++){ %> 
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/profile/<%= mostFollowed[i].id %>" >
+					<a href="/profile/<%= mostFollowed[i].id %>/followers" >
 						<figure class="product-box_image">
 							<% if(mostFollowed[i].image !== ""){ %>
 								<img src="/images/users/<%= mostFollowed[i].image%>" alt="">
@@ -49,7 +49,7 @@
 			<% for(let i=0;i<following.length;i++){ %> 
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/profile/<%= following[i].id %>" >
+						<a href="/profile/<%= following[i].id %>/following" >
 							<figure class="product-box_image">
 								<% if(following[i].image !== ""){ %>
 									<img src="/images/users/<%= following[i].image %>" alt="">
@@ -59,7 +59,7 @@
 									</a>
 							<article class="product-box_data">
 								<h2><%= following[i].name + " " + following[i].lastName %></h2>
-								<a href="/profile//<%= following[i].id %>/following"><p style="font-weight: bold;">Siguiendo: <%= following[i].following %> </p></a>
+								<a href="/profile/<%= following[i].id %>/following"><p style="font-weight: bold;">Siguiendo: <%= following[i].following %> </p></a>
 							</article>
 						
 					</section>
