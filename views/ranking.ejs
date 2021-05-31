@@ -103,7 +103,7 @@
 			<% for(let i=0;i<mostCommentsReceived.length;i++){ %> 
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/profile/<%= mostCommentsReceived[i].id %>" >
+						<a href="/profile/<%= commentsReceived[i].id %>/commentsreceived" >
 							<figure class="product-box_image">
 								<% if(mostCommentsReceived[i].image !== ""){ %>
 									<img src="/images/users/<%= mostCommentsReceived[i].image %>" alt="">
