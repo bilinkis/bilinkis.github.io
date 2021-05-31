@@ -364,5 +364,39 @@ let controller = {
             return res.render("commentsReceived",{title:"Comentarios recibidos",userData:values[0],comments:values[1]})
         })
     },
+    comments: function(req,res){
+        let findUser = new Promise(function(resolve,reject){
+            db.Users.findByPk(req.params.id)
+            .then(function(data){
+                if(data!==null){
+                resolve(data);
+            }else{
+                return res.redirect('/404')
+            }
+            })
+            .catch(function(err){
+                reject();
+            })
+        });
+        let findComments = new Promise(function(resolve,reject){
+            db.Comments.findAll({
+                where:{userId:req.params.id},
+                raw:true,
+                include: [{model: db.Posts, as:"Posts"}]
+            })
+            .then(function(data){
+                resolve(data)
+            })
+            .catch(function(err){
+                console.log(err)
+                reject()
+            })
+        })
+        Promise.all([findUser, findComments])
+        .then(function(values){
+            return res.render("comments",{title:"Comentarios",userData:values[0],comments:values[1]})
+        })
+
+    }
 }
 module.exports = controller;
