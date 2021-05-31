@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./partials/head.ejs') %> 
+<body>
+	<% if(locals.loggedIn == null){ %>
+		<%- include('./partials/header.ejs') %> 
+
+
+		<% } else{ %>
+			<%- include('./partials/headerLogueado.ejs') %> 
+			<% } %>
+
+
+	<!-- Datos del usuario -->
+	<section class="info-usuario container products-wrapper">
+		<div class="row">
+			
+			<div class="img-container offset-3 col-2">
+				<% if(userData.image !== ""){ %>
+				<img src="/images/users/<%= userData.image %>" alt="foto de perfil" class="foto-perfil">
+				<% }else{ %>
+					<img src="/images/users/nicobilinkis.png" alt="foto de perfil" class="foto-perfil">
+				<% } %> 
+			</div>
+			
+			<div class="data-container col-6">
+				<div class="d-flex align-items-center ">
+					<h1 class="main-title"><a href="/profile/<%= userData.id %>"><%= userData.name + " " + userData.lastName%> </a></h1>
+					
+					
+				
+				</div>
+				<div>
+					
+				</div>
+			</div>
+			<br><br>
+			
+		</div>
+	</section>
+	<!-- /Datos del usuario -->
+
+	<!-- Mis productos -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<% if(locals.loggedIn == true && locals.user.id == userData.id){ %>
+				<h2 class="products-title">Mis comentarios recibidos</h2>
+				<% }else{ %>
+					<h2 class="products-title">Comentarios recibidos</h2>
+				<%} %> 
+			</div>
+			<!-- Show mis productos -->
+			
+<% for(let i=0;i<comments.length;i++){ %>
+    <% console.log(comments) %> 
+    <div class="col-12 col-sm-6 col-lg-3">
+        <section class="product-box">
+            <a href="/profile/<%= comments[i]["comment.userId"] %>">
+                <figure class="product-box_image">
+					<%if(comments[i].image !== ""){%>
+                    <img src="/images/products/<%= comments[i].image %>" alt="cafetera moulinex">
+				<%}else{%>
+					<img src="/images/products/nicobilinkis.png" alt="cafetera moulinex">
+				<%}%>
+                </figure>
+                <article class="product-box_data">
+                    <h2><%= comments[i].title %> </h2>
+                    <p><%= comments[i]["comment.comment"] %> </p>
+                    
+                </article>
+            </a>
+        </section>
+    </div>
+    <% } %> 
+			<% if(comments.length == 0){%>
+                <h2>El usuario no recibió comentarios todavía.</h2>
+            <%}%>
+			
+		</div>
+		<div class="row">
+			<div class="col-12">
+				
+			</div>
+			<!-- Show mis productos -->
+			
+
+				
+			
+			
+		</div>
+	</div>
+
+
+
+	<%- include('./partials/footer.ejs') %> 
+</body>	
+</html>

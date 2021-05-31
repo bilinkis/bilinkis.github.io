@@ -330,6 +330,39 @@ let controller = {
         .then(function(values){
             return res.render("following",{title:"Seguidos",userData:values[0],following:values[1]})
         })
-    }
+    },
+    commentsReceived:function(req,res){
+        let findUser = new Promise(function(resolve,reject){
+            db.Users.findByPk(req.params.id)
+            .then(function(data){
+                if(data!==null){
+                resolve(data);
+            }else{
+                return res.redirect('/404')
+            }
+            })
+            .catch(function(err){
+                reject();
+            })
+        });
+        let findComments = new Promise(function(resolve,reject){
+            db.Posts.findAll({
+                where:{userId:req.params.id},
+                raw:true,
+                include:[{model:db.Comments, as:"comment"}]
+            })
+            .then(function(data){
+                resolve(data)
+            })
+            .catch(function(err){
+                console.log(err)
+                reject()
+            })
+        })
+        Promise.all([findUser, findComments])
+        .then(function(values){
+            return res.render("commentsReceived",{title:"Comentarios recibidos",userData:values[0],comments:values[1]})
+        })
+    },
 }
 module.exports = controller;
