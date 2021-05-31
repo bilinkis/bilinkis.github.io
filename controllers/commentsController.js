@@ -5,6 +5,7 @@ let controller = {
         db.Comments.create({
             userId: res.locals.user.id,
             comment:req.body.comment,
+            createdAt: timeStamp,
             productId: req.body.id,
             
         })

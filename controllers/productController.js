@@ -106,6 +106,8 @@ let controller = {
             description: req.body.product_description,
             image: req.file.filename,
             userId: res.locals.user.id,
+            createdAt: timeStamp,
+            updatedAt: timeStamp,
             comments:0,
         })
         .then(function(postsQuantity){
