@@ -52,6 +52,7 @@ module.exports = function(sequelize, dataTypes){
         Posts.hasMany(models.Comments,{
             foreignKey:'productId',
             allowNull: false,
+            as: "comment"
         })
         Posts.hasMany(models.Followers,{
             foreignKey:'follower',
