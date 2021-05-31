@@ -78,7 +78,7 @@
 			<% for(let i=0;i<mostCommentsPosted.length;i++){ %> 
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/profile/<%= mostCommentsPosted[i].id %>" >
+						<a href="/profile/<%= mostCommentsPosted[i].id %>/comments" >
 							<figure class="product-box_image">
 								<% if(mostCommentsPosted[i].image !== ""){ %>
 									<img src="/images/users/<%= mostCommentsPosted[i].image %>" alt="">
@@ -103,7 +103,7 @@
 			<% for(let i=0;i<mostCommentsReceived.length;i++){ %> 
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/profile/<%= commentsReceived[i].id %>/commentsreceived" >
+						<a href="/profile/<%= mostCommentsReceived[i].id %>/commentsreceived" >
 							<figure class="product-box_image">
 								<% if(mostCommentsReceived[i].image !== ""){ %>
 									<img src="/images/users/<%= mostCommentsReceived[i].image %>" alt="">
