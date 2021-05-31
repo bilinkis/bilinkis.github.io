@@ -101,13 +101,14 @@ let controller = {
         if(err) {
             console.log(err);
         }
+        let timestamp = new Date().getTime();
         db.Posts.create({
             title: req.body.product_name,
             description: req.body.product_description,
             image: req.file.filename,
             userId: res.locals.user.id,
-            createdAt: timeStamp,
-            updatedAt: timeStamp,
+            createdAt: timestamp,
+            updatedAt: timestamp,
             comments:0,
         })
         .then(function(postsQuantity){

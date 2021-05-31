@@ -4,8 +4,6 @@ const bcrypt = require("bcryptjs");
 var multer = require("multer");
 var fs = require("fs");
 var path = require("path");
-const { DefaultDeserializer } = require("v8");
-const { timeStamp } = require("console");
 var storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, "public/images/users");
@@ -96,6 +94,7 @@ let controller = {
       })
       .then(function(user){
         if(user == null){
+          let timestamp = new Date().getTime();
           db.Users.create({
             name: data.name,
             lastName: data.lastName,
@@ -107,8 +106,8 @@ let controller = {
             image: req.file.filename,
             followers: 0,
             following: 0,
-            createdAt: timeStamp,
-            updatedAt: timeStamp,
+            createdAt: timestamp,
+            updatedAt: timestamp,
             commentsPosted: 0,
             commentsReceived: 0,
             postsQuantity: 0

@@ -2,10 +2,11 @@ const db = require("../database/models");
 const Op = db.Sequelize.Op;
 let controller = {
     save: function(req,res){
+        let timestamp = new Date().getTime();
         db.Comments.create({
             userId: res.locals.user.id,
             comment:req.body.comment,
-            createdAt: timeStamp,
+            createdAt: timestamp,
             productId: req.body.id,
             
         })
