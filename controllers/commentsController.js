@@ -16,6 +16,7 @@ let controller = {
             .then(function(post){
                 db.Posts.update({
                     comments: post.dataValues.comments + 1,
+                    updatedAt: new Date().getTime(),
                 },{
                     where:{id:req.body.id}
                 })
@@ -26,8 +27,8 @@ let controller = {
                     })
                     .then(function(postUser){
                         db.Users.update({
-                            commentsReceived: postUser.commentsReceived +1
-        
+                            commentsReceived: postUser.commentsReceived +1,
+                            updatedAt: new Date().getTime(),
                             },
                             {
                                 where: {id: postUser.id}
@@ -38,7 +39,8 @@ let controller = {
                                     where:{id:res.locals.user.id}
                                 }).then(function(userPosting){
                                     db.Users.update({
-                                        commentsPosted: userPosting.commentsPosted +1
+                                        commentsPosted: userPosting.commentsPosted +1,
+                                        updatedAt: new Date().getTime(),
                                     },
                                     {
                                         where: {id: res.locals.user.id}
@@ -69,6 +71,7 @@ let controller = {
             .then(function(post){
                 db.Posts.update({
                     comments: post.dataValues.comments -1,
+                    updatedAt: new Date().getTime(),
                 },{
                     where:{id:req.body.postId}
                 })

@@ -114,6 +114,7 @@ let controller = {
         .then(function(postsQuantity){
             db.Users.update({
                 postsQuantity: res.locals.user.postsQuantity +1,
+                updatedAt: new Date().getTime(),
             },
             {
                 where: {id:res.locals.user.id}
@@ -160,7 +161,8 @@ let controller = {
                 db.Posts.update({
                     title:req.body.product_name,
                     description:req.body.product_description,
-                    image:req.file.filename
+                    image:req.file.filename,
+                    updatedAt: new Date().getTime(),
                 },{
                     where: {id:req.body.id}
                 })
@@ -180,6 +182,7 @@ let controller = {
                 db.Posts.update({
                     title:req.body.product_name,
                     description:req.body.product_description,
+                    updatedAt: new Date().getTime(),
                 },{
                     where: {id:req.body.id}
                 })

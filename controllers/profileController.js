@@ -127,6 +127,7 @@ let controller = {
             else{
                 db.Users.update({
                     email:req.body.email,
+                    updatedAt: new Date().getTime(),
                 },{
                     where: {id:req.body.id}
                 })
@@ -154,6 +155,7 @@ let controller = {
         let passEncriptada = bcrypt.hashSync(req.body.password, 10)
         db.Users.update({
             password:passEncriptada,
+            updatedAt: new Date().getTime(),
         },{
             where: {id:req.body.id}
         })
@@ -216,7 +218,8 @@ let controller = {
             })
                 .then(function (followedUser){
                     db.Users.update({
-                        followers: followedUser.followers +1
+                        followers: followedUser.followers +1,
+                        updatedAt: new Date().getTime(),
                     },
                     {
                         where: {id:req.body.followed}
@@ -228,7 +231,8 @@ let controller = {
                         })
                         .then(function(followingUser){
                             db.Users.update({
-                                following: followingUser.following +1
+                                following: followingUser.following +1,
+                                updatedAt: new Date().getTime(),
                             },
                             {
                                 where: {id: res.locals.user.id}
