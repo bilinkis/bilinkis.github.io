@@ -5,9 +5,11 @@ let controller = {
     main: function (req,res){
         let buscador = req.query.search;
         db.Posts.findAll({
-            where: [
-            { title: { [op.like]:  '%'+buscador+'%' }}
-            ],
+            where: {
+                [op.or]: [
+                    { title: { [op.like]:  '%'+buscador+'%' }},
+                    { description: { [op.like]:  '%'+buscador+'%' }},
+                ]},
             raw:true,
             include: [{model:db.Users, as:"user"}]
         })
