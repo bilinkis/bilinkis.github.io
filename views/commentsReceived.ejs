@@ -65,8 +65,9 @@
 				<%}%>
                 </figure>
                 <article class="product-box_data">
-                    <h2><%= comments[i].title %> </h2>
-                    <p>Comentario: <%= comments[i]["comment.comment"] %> </p>
+                    <h2>Producto: <%= comments[i].title %> </h2>
+					<a href="/profile/<%= comments[i]["comment.user.id"] %>"><h4>Comentario creado por: <%= comments[i]["comment.user.name"] + " " + comments[i]["comment.user.lastName"] %></h4></a>
+                    <p>Contenido del comentario: <%= comments[i]["comment.comment"] %> </p>
                     
                 </article>
             </a>

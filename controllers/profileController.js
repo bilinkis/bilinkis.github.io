@@ -353,7 +353,9 @@ let controller = {
             db.Posts.findAll({
                 where:{userId:req.params.id},
                 raw:true,
-                include:[{model:db.Comments, as:"comment"}]
+                include:[{model:db.Comments, as:"comment", include:[{
+                    model:db.Users, as:"user"
+                }]}]
             })
             .then(function(data){
                 resolve(data)
