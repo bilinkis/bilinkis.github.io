@@ -82,13 +82,7 @@ let controller = {
     }
     },
     saveProduct: function(req,res){
-        
-        
-        upload(req,res,function(err) {
-            
-        if(err) {
-            console.log(err);
-        }
+
         let timestamp = new Date().getTime();
         db.Posts.create({
             title: req.body.product_name,
@@ -115,7 +109,6 @@ let controller = {
         .catch(function(err){
             console.log(err)
         })
-    });
         
         
 
@@ -140,12 +133,7 @@ let controller = {
         
     },
     storeEdit: function(req,res){
-            upload(req,res,function(err) {
-            
-                if(err) {
-                    console.log(err);
-                }
-                if(req.body.product_file){
+                if(req.file.filename){
                 db.Posts.update({
                     title:req.body.product_name,
                     description:req.body.product_description,
@@ -187,7 +175,6 @@ let controller = {
                 
                 })
             }
-            })
         
             
                 
