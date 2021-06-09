@@ -1,9 +1,7 @@
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
 const bcrypt = require("bcryptjs");
-var multer = require("multer");
 var fs = require("fs");
-var path = require("path");
 
 let controller = {
   viewLogin: function (req, res) {
@@ -75,10 +73,6 @@ let controller = {
       });
   },
   store: function (req, res) {
-    upload(req, res, function (err) {
-      if (err) {
-        console.log(err);
-      }
       let data = req.body;
       let passEncriptada = bcrypt.hashSync(req.body.password, 10);
       db.Users.findOne({
@@ -120,8 +114,7 @@ let controller = {
         console.log(err)
       })
       
-    });
-  },
+      },
   logout: function (req, res) {
     req.session.destroy();
     res.clearCookie("userId");
