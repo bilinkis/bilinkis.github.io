@@ -4,15 +4,7 @@ const bcrypt = require("bcryptjs");
 var multer = require("multer");
 var fs = require("fs");
 var path = require("path");
-var storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, "public/images/users");
-  },
-  filename: function (req, file, callback) {
-    callback(null, "user-" + Date.now() + path.extname(file.originalname));
-  },
-});
-var upload = multer({ storage: storage }).single("user_file");
+
 let controller = {
   viewLogin: function (req, res) {
     if(res.locals.loggedIn == null){
