@@ -4,18 +4,6 @@ var multer = require('multer');
 var fs = require('fs');
 var path = require('path');
 const Users = require("../database/models/Users");
-var storage =   multer.diskStorage({
-  destination: function (req, file, callback) {
-    
-            callback(null, 'public/images/products');
-        },
-  filename: function (req, file, callback) {
-    callback(null,  'product-' + Date.now() + path.extname(file.originalname));
-  }
-});
-var upload = multer({ storage : storage}).single('product_file');
-
-
 
 let controller = {
     main: function (req,res){
