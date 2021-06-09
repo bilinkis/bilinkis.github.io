@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 let productsController = require('../controllers/productController');
+var multer = require("multer");
+var path = require("path");
+
 
 //Config de multer
 var storage =   multer.diskStorage({
@@ -18,7 +21,7 @@ router.get('/:id', productsController.main);
 router.get('/', productsController.add);
 router.post('/store', upload.single('product_file'), productsController.saveProduct);
 router.get('/:id/edit', productsController.edit);
-router.post('/edit', productsController.storeEdit);
+router.post('/edit', upload.single('product_file'), productsController.storeEdit);
 router.post('/delete', productsController.delete);
 
 
