@@ -15,8 +15,8 @@ var storage =   multer.diskStorage({
   var upload = multer({ storage : storage})
 
 router.get('/:id', productsController.main);
-router.get('/', upload.single('product'), productsController.add);
-router.post('/store', productsController.saveProduct);
+router.get('/', productsController.add);
+router.post('/store', upload.single('product'), productsController.saveProduct);
 router.get('/:id/edit', productsController.edit);
 router.post('/edit', productsController.storeEdit);
 router.post('/delete', productsController.delete);
