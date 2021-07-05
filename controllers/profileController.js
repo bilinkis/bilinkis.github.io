@@ -104,7 +104,7 @@ let controller = {
     })
     },
     edit: function(req,res){
-        if(res.locals.loggedIn == true && userId == res.locals.id){
+        if(res.locals.loggedIn == true && req.params.id == res.locals.user.id){
         db.Users.findByPk(req.params.id)
         .then(function(data){
             return res.render('profile-edit-email', {title: "Cambiá tu email", user: data.dataValues, path: req.originalUrl,error:req.cookies.error})
@@ -144,7 +144,7 @@ let controller = {
         
     },
     editPassword: function(req,res){
-        if(res.locals.loggedIn == true && userId == res.locals.id){
+        if(res.locals.loggedIn == true && req.params.id == res.locals.user.id){
         db.Users.findByPk(req.params.id)
         .then(function(data){
             return res.render('profile-edit-password', {title: "Cambiá tu password", user: data.dataValues, path: req.originalUrl})
